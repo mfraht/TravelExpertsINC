@@ -1,0 +1,21 @@
+extends layout
+
+block content  
+    form.row.g-3.my-3(method='POST' action="/users/sign-up")
+        .col-md-6
+            label(for="username") Username
+            input.form-control(name="username" placeholder="Username" type="text")
+        .col-md-6
+            label(for="password") Password
+            input.form-control(name="password" type="password")
+        .col-md-6
+            label(for="fname") First Name
+            input.form-control(name="fname" placeholder="Your First Name" type="text")
+        .col-md-6
+            label(for="lname") Last Name
+            input.form-control(name="lname" placeholder="Family Name" type="text")
+        .col-md-12
+            label(for="email") Email
+            input.form-control(name="email" placeholder="Email Address" type="email")
+        .col-md-12
+            button.btn.btn-primary(type="submit") Register

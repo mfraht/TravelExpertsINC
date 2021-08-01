@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h2 Create a new post
+
+  form(method='POST' action='/post/create')
+    .form-floating.m-3      
+      input#exampleFormControlInput1.form-control(type='text' placeholder='Title' name='posttitle' value=postdata && postdata.posttitle)
+      label.form-label(for='exampleFormControlInput1') Title
+    .form-floating.m-3
+      textarea#floatingTextarea.form-control(placeholder='Leave a comment here' name='postbody')= postdata && postdata.postbody
+      label(for='floatingTextarea') Body
+    .form-floating.m-3
+      input#posturlid.form-control(placeholder='Post slug' name='posturl'  value=postdata && postdata.posturl)
+      label(for='posturlid') Post URL
+      
+    button.btn.btn-primary.m-3(type='submit') Submit
+
+  
