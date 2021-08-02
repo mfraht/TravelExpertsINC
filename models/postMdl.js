@@ -23,12 +23,12 @@ const postSchema = new mongoose.Schema({
   posturl: {
     type: String,
     trim: true,
-    validate: {
-      validator: function (v) {
-        return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(v);
-      },
-      message: (props) => `${props.value} is not a valid URL slug.`,
-    },
+    // validate: {
+    //   validator: function (v) {
+    //     return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(v);
+    //   },
+    //   message: (props) => `${props.value} is not a valid URL slug.`,
+    // },
     required: "Please enter the post url slug",
   },
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
