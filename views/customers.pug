@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    .container
+        h2 All customers
+            each element in customers    
+                .row
+                    .card.col-12.border-danger
+                        h5.card-text
+                            | CustomerId: #{element.CustomerId}
+                        h5.card-text
+                            | CustFirstName: #{element.CustFirstName}
+                        h5.card-text
+                            | CustLastName: #{element.CustLastName}
+                        h5.card-text
+                            | CustAddress: #{element.CustAddress} 
+                        h5.card-text
+                            | CustCity: #{element.CustCity}
+                        h5.card-text
+                            | CustProv: #{element.CustProv}
+                        h5.card-text
+                            | CustPostal: #{element.CustPostal}
+                        h5.card-text
+                            | CustCountry: #{element.CustCountry}
+                        h5.card-text
+                            | CustHomePhone: #{element.CustHomePhone}
+                        h5.card-text
+                            | CustBusPhone: #{element.CustBusPhone}
+                        h5.card-text
+                            | CustEmail: #{element.CustEmail}
+                        h5.card-text
+                            | AgentId: #{element.AgentId}
+            a.btn.btn-primary.col-12(href='/') Home Page
