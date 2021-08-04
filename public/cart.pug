@@ -1,0 +1,60 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Your Cart
+  link(rel='stylesheet' href='./stylesheets/new_packages.css')
+nav.overlap
+  ul
+    li
+      a(href='#home') Home
+    li
+      a(href='#contact') Contact
+    li
+      a(href='#login') Log in
+    li
+      a(href='#register') Register
+    li
+      a(href='#packages') Travel Packages
+    li(style='float:right')
+      a(href='#about') Cart
+
+#bg-images.overlap
+  #img2.bg-image
+  #img1.bg-image
+  #img3.bg-image
+
+#textcontent.bg-text.overlap
+  h1 Review your purchase
+  .package-container
+    article.package
+      .package-photo
+        img(src='./images/caribbean.jpg' alt='Beach bar in the Caribbean')
+      .package-content
+        h1.package-title
+          a(href='#') Caribbean New Year
+        p.package-desc $4,800 CAD per traveller
+        form(action='#')
+          label(for='adult_travellers') How many adults:
+          select#travellers(name='guests')
+            option(value='one') 1
+            option(value='two') 2
+            option(value='three') 3
+            option(value='four') 4
+            option(value='group') 5+
+          br
+          br
+          label(for='child_travellers') How many children:
+          select#child_travellers(name='child_guests')
+            option(value='zero') 0
+            option(value='onechild') 1
+            option(value='twochildren') 2
+            option(value='threechildren') 3
+            option(value='lotsofchildren') 4+
+          br
+          br
+          input(type='submit' value='Purchase')
+        p
+          | If travelling with five or more people, please call an agent for a group discount!
+        p Children under the age of 12 must be accompanied by an adult. 

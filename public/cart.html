@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+
+  <link rel="stylesheet" href="./stylesheets/new_packages.css">
+
+</head>
+<body>
+
+  <nav class="overlap">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#login">Log in</a></li>
+      <li><a href="#register">Register</a></li>
+      <li><a href="#packages">Travel Packages</a></li>
+      <li style="float:right"><a href="#about">Cart</a></li>
+    </ul>
+  </nav>
+  
+  <div id="bg-images" class="overlap">
+    <div class="bg-image" id="img2"></div>
+    <div class="bg-image" id="img1"></div>
+    <div class="bg-image" id="img3"></div>
+  </div>
+
+  <div class="bg-text overlap" id="textcontent">
+    <h1>Review your purchase</h1>
+
+    <div class="package-container">
+      <article class="package">
+        <div class="package-photo">
+          <img src="./images/caribbean.jpg" alt="Beach bar in the Caribbean">
+        </div>
+
+        <div class="package-content">
+          <h1 class="package-title"><a href="#">Caribbean New Year</a></h1>
+          <p class="package-desc">$4,800 CAD per traveller</p>
+
+          <form action="#">
+            <label for="adult_travellers">How many adults:</label>
+            <select name="guests" id="travellers">
+              <option value="one">1</option>
+              <option value="two">2</option>
+              <option value="three">3</option>
+              <option value="four">4</option>
+              <option value="group">5+</option>
+            </select>
+            <br><br>
+            
+           <label for="child_travellers">How many children:</label>
+            <select name="child_guests" id="child_travellers">
+              <option value="zero">0</option>
+              <option value="onechild">1</option>
+              <option value="twochildren">2</option>
+              <option value="threechildren">3</option>
+              <option value="lotsofchildren">4+</option>
+            </select>
+
+            <br>
+            <br>
+            
+           <input type="submit" value="Purchase">
+          </form>
+          
+          <p>If travelling with five or more people, please call an agent for a group discount!</p>
+          <p>Children under the age of 12 must be accompanied by an adult. </p>
+          
+
+        </div>
+      </article>
+    </div>
+
+
+
+</body>
+</html>
+
+<!-- Author: Cody Kozlik -->
