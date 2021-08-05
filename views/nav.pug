@@ -1,21 +1,23 @@
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.panelsStayOpen-headingTwo.accordion-header
   .container-fluid
     //- a.navbar-brand(href='#') My Blog
     //- button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
     //-   span.navbar-toggler-icon
     h3
-      .collapse.navbar-collapse
-        ul.navbar-nav
+      .collapse.navbar-collapse.bg-primary
+        ul.nav
           li.nav-item
-            a.nav-link.active(aria-current='page', href='/') Home
+            a.text-white.nav-link.active(aria-current='page', href='/') Home
           li.nav-item
-            a.nav-link(href='/customers') Customers
+            a.text-white.nav-link(href='/customers') Customers
           //- li.nav-item
           //-   a.nav-link(href='/post') Posts
           if currentUser
               li.nav-item
-              a.nav-link(href='/post/create') Create a Post
+              a.text-white.nav-link(href='/post/create') Create a Post
           if currentUser && currentUser.role == "manager"
               li.nav-item
-              a.nav-link(href='/data') Performance Data
+              a.text-white.nav-link(href='/data') Performance Data
         
+
+

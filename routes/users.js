@@ -20,7 +20,7 @@ router.get("/sign-up", function (req, res, next) {
   res.render("sign-up", pageRegister);
 });
 
-router.post("/sign-up", function (req, res, next) {
+router.post("/", function (req, res, next) {
   // Create a new user object from the User Model
   const user = new User(req.body);
   const errs = user.validateSync(); // Run the model validation
@@ -38,17 +38,23 @@ router.post("/sign-up", function (req, res, next) {
       }
       //console.log(result);
       const headermessage = `Account created ${result.fname}`;
-      res.redirect("/?headermessage=" + headermessage);
+      res.redirect("users/profile" + headermessage);
     });
   });
 });
+
+router.get('/profile', function(req, res, next) {
+  res.render('profile');
+});
+
+
 
 function processErrors(errs, req, res) {
   // If there are errors from the Model schema
   const errorArray = [];
   const errorKeys = Object.keys(errs.errors);
   errorKeys.forEach((key) => errorArray.push(errs.errors[key].message));
-  return res.render("sign-up", {
+  return res.render("profile", {
     ...pageRegister,
     errors: errorArray,
     ...req.body,

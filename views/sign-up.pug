@@ -1,6 +1,8 @@
 extends layout
 
-block content  
+block content
+    h1 Please Register
+    .bg-image.img1
     form.row.g-3.my-3(method='POST' action="/users/sign-up")
         .col-md-6
             label(for="username") Username
@@ -14,8 +16,16 @@ block content
         .col-md-6
             label(for="lname") Last Name
             input.form-control(name="lname" placeholder="Family Name" type="text")
-        .col-md-12
+        .col-md-6
             label(for="email") Email
             input.form-control(name="email" placeholder="Email Address" type="email")
+        //- if currentUser.role == "manager"
+            .col-md-6
+                label(for="role") Role
+                input.form-control(name="role" placeholder="manager" type="text")
+        //- else 
+        //-     .col-md-6
+        //-         label(for="role") Role
+        //-         input.form-control(name="role" placeholder="customer" type="text")
         .col-md-12
             button.btn.btn-primary(type="submit") Register

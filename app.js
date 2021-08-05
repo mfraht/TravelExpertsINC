@@ -9,6 +9,7 @@ var usersRouter = require("./routes/users");
 var postRouter = require("./routes/post");
 
 var customersRouter = require("./routes/customersRouter");
+var packagesRouter = require("./routes/package");
 
 const mongoSanitize = require("express-mongo-sanitize");
 
@@ -71,6 +72,7 @@ app.use("/users", usersRouter);
 app.use("/post", postRouter);
 
 app.use("/customers", customersRouter);
+app.use("/package", packagesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

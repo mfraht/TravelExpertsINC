@@ -7,5 +7,12 @@ router.get('/', function(req, res, next) {
 });
 
 
+/* GET profile page. */
+
+
+
+
+
+
 
 module.exports = router;

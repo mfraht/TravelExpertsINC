@@ -1,16 +1,29 @@
 if !hideLogin
-    .bg-secondary
-        form.row.g-3(action="/login" method="POST")
-            .col
-                h5 Please Log In
-            .col            
-                input.form-control(name="username" placeholder="Username" type="text")
-            .col            
-                input.form-control(name="username" placeholder="Username" type="text")
-            .col
-                input.form-control(name="password" type="password" placeholder="Password")
-            .col
-                button.btn.btn-primary.mb-2 Log In
+    .container
+        form(action="/login" method="POST").text-center
+            ul.bg-light
+                //- li.offset-1
+                //-     h5 Sign in 
+                li.offset-3
+                    input.form-control(name="username" placeholder="Username" type="text")
+                li
+                    input.form-control(name="password" type="password" placeholder="Password")
+                li
+                    button.btn.btn-primary.mb-2 Log In
+                li.offset-1
+                    a.float-end.bg-secondary(href="/users/sign-up").button.btn.btn-primary.mb-2 Register
+                    
 
-        a.float-end.bg-secondary(href="/users/sign-up") 
-            h5 Register
+    //- .bg-secondary
+    //-     form.row.g-3(action="/login" method="POST")
+    //-         .col
+    //-             h5 Please Log In
+    //-         .col            
+    //-             input.form-control(name="username" placeholder="Username" type="text")
+    //-         .col
+    //-             input.form-control(name="password" type="password" placeholder="Password")
+    //-         .col
+    //-             button.btn.btn-primary.mb-2 Log In
+
+    //-     a.float-end.bg-secondary(href="/users/sign-up") 
+    //-         h5 Register

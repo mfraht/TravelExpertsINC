@@ -1,0 +1,181 @@
+@charset "UTF-8";
+
+* {
+  /* border:  2px magenta solid; */
+  box-sizing: border-box;
+  
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #00c2d2;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #00c2d2;
+}
+
+.active {
+  background-color: #00b2c1
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.bg-image {
+  height: 75%;   
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.img7 { background-image: url("../images/seven.jpg"); transform: scaleX(-1);}
+.img8 { background-image: url("../images/eight.jpg"); }
+.img9 { background-image: url("../images/nine.jpg"); }
+
+.big {
+	width: 80%;
+	padding: 24px;
+  margin: 0 auto;  
+}
+
+.bg-text2 {
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0, 0.3); 
+  color: white;
+  border: 10px solid #f1f1f1;
+  top: 50%;
+  left: 50%;
+  transform: translate(50%, -200%);
+  z-index: 2;
+  padding: 2.5em;
+  text-align: center;
+}
+
+#textcontent2 {
+  width: 50%;
+  background-color:rgba(255, 255, 255, 0.7);
+  color: #000;
+  font-size: 1rem;
+}
+
+.packages,
+.package2 {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin: auto;
+}
+
+.package2 {
+	flex: 3 1 30ch;
+	height: calc(282px + 5vw);
+	overflow: hidden;
+}
+
+#hawaii {
+		max-width: 80%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		object-fit: cover;
+		object-position: 50% 50%;
+		margin: auto;
+}
+
+.package {
+	border: 2px solid #F2F2F2;
+	border-radius: 8px;
+	overflow: hidden;
+	
+	&-content {
+		padding: 16px 32px;
+		flex: 4 1 40ch
+		}
+	
+	&-tags {
+		margin: 0 -8px;
+	}
+
+	&-tag {
+		display: inline-block;
+		margin: 8px;
+		font-size: .875em;
+		text-transform: uppercase;
+		font-weight: 600;
+		letter-spacing: .02em;
+		color: var(--primary);
+	}
+	
+	&-title {
+		margin: 0;
+		font-size: clamp(1.4em, 2.1vw, 2.1em);
+		font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+		
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+	}
+	
+	&-metadata {
+		margin: 0;
+	}
+	
+	&-rating {
+		font-size: 1.2em;
+		letter-spacing: 0.05em;
+		color: var(--primary);
+		
+		span {
+			color: var(--grey);
+		}
+	}
+	
+	&-votes {
+		font-size: .825em;
+		font-style: italic;
+		color: var(--lightgrey);
+	}
+	
+	&-buy {
+		display: flex;
+		align-items: center;
+		padding: 6px 14px 6px 12px;
+		border-radius: 4px;
+		border: 2px solid currentColor;
+		color: var(--primary);
+		background: none;
+		cursor: pointer;
+		font-weight: bold;
+		
+		svg {
+			margin-right: 6px;
+		}
+	}
+}
+
+#cart {
+  padding: 5px;
+  width:  50px;
+}

@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  h1= title
+  if add
+    h3 Add new product
+  else 
+    h3 Edit product
+  form.row.g-3(method='POST' action="")
+    .col-md-6
+      label.form-label(for='inputname') Name
+      input#inputname.form-control(type='text' name='name' required value= prod && prod.name)
+    .col-md-6
+      label.form-label(for='inputprice') Price
+      input#inputprice.form-control(type='number' placeholder='0.0' step="any" name='price' required  value=prod && prod.price)
+    .col-12
+      label.form-label(for='inputdescription') Description
+      textarea#inputdescription.form-control(rows="3" name='description')
+        | #{prod && prod.description}
+    .col-md-6
+      label.form-label(for='inputimage') Image
+      input#inputimage.form-control(type='text' placeholder='image.jpg' name='image'  value=prod && prod.image)    
+    .col-md-6
+      button.btn.btn-primary.col-12.mt-4(type='submit') 
+        if add
+          | Add
+        else 
+          | Update
+      a.btn.btn-primary.col-12.mt-4(href=add ? '/' : '/product/details/' + (prod && prod._id)) Cancel
+      // Another way for doing the cancel button
+        if add
+          a.btn.btn-primary.col-12.mt-4(href= '/' ) Cancel
+        else 
+          a.btn.btn-primary.col-12.mt-4(href='/product/details/'+prod._id) Cancel
+
+  .container
+      if errors    
+        each error in errors
+            p.alert.alert-danger= error
+

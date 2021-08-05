@@ -34,28 +34,7 @@ router.get("/", function (req, res, next) {
 //   res.render("sign-up", pageRegister);
 // });
 
-router.post("/sign-up", function (req, res, next) {
-  // Create a new customer object from the customer Model
-  const customer = new customer(req.body);
-  const errs = customer.validateSync(); // Run the model validation
-  if (errs) {
-    return processErrors(errs, req, res);
-  }
-  bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
-    if (err) throw err;
-    // Replace the plain password with the hashed password
-    ////customer.password = hashedPassword;
-    // Store the use object in the DB
-    customer.save((err, result) => {
-      if (err) {
-        return processErrors(err, req, res);
-      }
-      //console.log(result);
-      const headermessage = `Account created ${result.fname}`;
-      res.redirect("/?headermessage=" + headermessage);
-    });
-  });
-});
+
 
 function processErrors(errs, req, res) {
   // If there are errors from the Model schema

@@ -1,11 +1,12 @@
 extends layout
 
 block content
+    .bg-image.img1
     .container
         h2 All customers
             each element in customers    
                 .row
-                    .card.col-12.border-danger
+                    .card.col-12.border-danger.bg-light.bg-gradient
                         h5.card-text
                             | CustomerId: #{element.CustomerId}
                         h5.card-text
@@ -31,3 +32,4 @@ block content
                         h5.card-text
                             | AgentId: #{element.AgentId}
             a.btn.btn-primary.col-12(href='/') Home Page
+
