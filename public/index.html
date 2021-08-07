@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+
+  <link rel="stylesheet" href="./stylesheets/homepage.css">
+  <script src="https://kit.fontawesome.com/833bdb447d.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- Comment -->
+  <header>
+    <!-- navigation -->
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#login">Log in</a></li>
+        <li><a href="/booking_confirmation.html">Register</a></li>
+        <li><a href="#packages">Travel Packages</a></li>
+        <li style="float:right"><a href="#about">Cart</a></li>
+      </ul>
+
+    </nav>
+    <!-- banner -->
+    <div class="banner">
+      <div class="herotext">
+        <h1>Travel Experts Inc</h1>
+        <h2>Here to help keep you on the Move</h2>
+      </div>
+    </div>
+
+
+    <div class="flight_form">
+      <h3>Find your Trip</h3>
+
+      <div class="trip_type">
+        <form action="/">
+            <input type="radio" id="roundTrip" name="tripType" value="roundTrip">
+            <label for="roundTrip">Round Trip</label>
+            <input type="radio" id="oneWay" name="tripType" value="oneWay">
+            <label for="oneWay">One Way</label>
+            <input type="radio" id="multiCity" name="tripType" value="multiCity">
+            <label for="multiCity">Multi City</label>
+        </form>
+      </div>
+
+      <br>
+      <br>
+      <div class="location">
+        <form action="/" method="post">
+          <label for="departure">Flying From:</label>
+          <div class="flight-wrapper">
+          <select id="departure" name="departure">
+
+            <option value="">Calgary</option>
+            <option value="">Edmonton</option>
+            <option value="">Toronto</option>
+            <option value="">Vancouver</option>
+          </select>
+        </div>
+
+          <label for="arrival">Flying To:</label>
+          
+          <div class="flight-wrapper">
+          <select id="arrival" name="arrival">
+
+            <option value="">Calgary</option>
+            <option value="">Edmonton</option>
+            <option value="">Toronto</option>
+            <option value="">Vancouver</option>
+          </select>
+        </div>
+
+          <br>
+          <br>
+
+
+          <label for="departure_date">Departure Date:</label>
+          <input type="date" id="departure_date" name="departure_date">
+
+          <label for="arrival_date">Arrival Date:</label>
+          <input type="date" id="arrival_date" name="arrival_date">
+
+          <br>
+          <br>
+
+          <input type="submit" value="Search">
+
+        </form>
+      </div>
+    </div>
+
+  </header>
+  <div class="bg_image img8"></div>
+  <div class="bg_image img10"></div>
+
+  <div class="grid-container">
+    <div class="about p-lr">
+      <h2>About Us</h2>
+      <p>Vestibulum ut tempor lorem. Nam ut mi mauris. Aliquam quis viverra <a href="#" target="_blank">velit.</a>
+        Sed egestas, velit sit amet luctus pretium, enim dolor interdum felis, at pretium tellus nibh id velit.
+        Maecenas semper tincidunt dolor tincidunt fringilla. Fusce bibendum nunc ac magna elementum, a ultricies
+        nulla posuere. Cras sed lacus faucibus, ornare diam vitae, dapibus mauris. Ut ac est non lectus gravida
+        placerat at non lectus. Nunc blandit, elit eu tempor aliquam, mi libero fringilla nisl, non sagittis
+        massa justo in nunc. Donec ornare sed arcu nec tempor. Duis nec ipsum varius, viverra lacus sit amet,
+        sollicitudin arcu.</p>
+    </div>
+    <div class ="contact_details">
+      <h2>Contact Us</h2>
+      <i class="fas fa-phone-square-alt" style="font-size: 20px;"> 123-456-7890 </i>
+      <br><br>
+      <i class="fas fa-envelope" style="font-size: 20px;"> travelexpertsinc@icloud.com </i>
+      <br><br>
+      <i class="fas fa-map-marker-alt" style="font-size: 20px;">Calgary, Alberta</i>
+    </div>
+  </div>
+
+  <footer>
+		<p>Copyright &copy; Travel Experts Inc 2021</p>
+	</footer>
+
+</body>
+
+</html>
+
+<!-- Author:Funmi Ayorinde -->

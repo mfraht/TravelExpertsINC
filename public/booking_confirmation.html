@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+
+    <link rel="stylesheet" href="./stylesheets/homepage.css" </head>
+
+<body>
+    <!-- Comment -->
+    <header>
+        <!-- navagation -->
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#login">Log in</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#packages">Travel Packages</a></li>
+                <li style="float:right"><a href="#about">Cart</a></li>
+            </ul>
+
+        </nav>
+    </header>
+    <div class=booking_confirmation>
+        <form action="/">
+            <div class="traveler_info">
+                <!-- <legend></legend> -->
+                <h2>Who's travelling?</h2>
+                <p> Traveller names must match government-issued photo ID exactly.</p>
+
+                <label for="title">Title:</label>
+                <div class="title-p">
+                    <select id="title" name="title">
+                        <option value=""></option>
+                        <option value="">Mr.</option>
+                        <option value="">Ms.</option>
+                        <option value="">Mrs.</option>
+                        <option value="">Miss</option>
+                        <option value="">Master</option>
+                        <option value="">Dr.</option>
+                        <option value="">Prof.</option>
+                    </select>
+                </div>
+                <br>
+
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname" value="John">
+                <label for="mname">Middle name:</label>
+                <input type="text" id="mname" name="mname" value="">
+                <label for="lname">Last name:</label>
+                <input type="text" id="lname" name="lname" value="Doe"><br><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br><br>
+                <label for="phone">Phone number:</label><br>
+                <input type="tel" id="phone" name="phone" placeholder="123-456-7890"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br><br>
+                <label for="country_code">Country/Territory Code:</label>
+
+                <div class="code_c">
+                    <select id="country_code" name="country_code">
+                        <option value="">Afghanistan +93</option>
+                        <option value="">Albania +355</option>
+                        <option value="">Algeria +213</option>
+                        <option value="">Bahamas +1</option>
+                        <option value="">Canada +1</option>
+                        <option value="">United Kingdom +44</option>
+                        <option value="">United States of America +1</option>
+                        <option value="">Vietnam +84</option>
+                    </select>
+                </div><br>
+                <label for="gender">Gender</label><br>
+                <input type="radio" id="male" name="male" value="male">
+                  <label for="male">Male</label>
+                  <input type="radio" id="female" name="female" value="female">
+                  <label for="female">Female</label><br><br>
+                <label for="birthday">Date of Birth:</label><br>
+                <input type="date" id="birthday" name="birthday"><br><br>
+                <input class="roundbtn" type="submit" value="Submit">
+
+            
+        </form>
+
+        <div class="complete_booking">
+            <h2>Review and book your trip</h2>
+            <ol class=review_info>
+                <li class=review>Review your trip details to make sure the dates and times are correct.</li>
+                <li class=review>Check your spelling. Flight passenger names must match government-issued photo ID
+                    exactly.
+                </li>
+                <li class=review>Review the terms of your booking:
+
+
+                    <ol style="list-style-type:lower-roman;">
+                        <li class=review>We understand that sometimes plans change. We do not charge a cancel or change
+                            fee.
+                            When the
+                            airline charges such fees in accordance with its own policies, the cost will be passed on to
+                            you.</li>
+                        <li class=review>Please read important information regarding airline liability limitations </li>
+                        <li class=review>Prices may not include baggage fees or other fees charged directly by the
+                            airline</li>
+                        <li class=review>Fares are not guaranteed until ticketed.</li>
+                    </0l>
+                </li>
+            </ol>
+            <p style="color: blue;font-family: 'Times New Roman', Times, serif;font-size: 20px;">By clicking on the
+                button
+                below, I acknowledge that I have reviewed the Privacy Statement and Government
+                Travel Advice and have reviewed and accept the above Rules & Restrictions and Terms of Use.</p>
+
+
+            <div class=comp_button>
+                <form action="/action_page.php">
+                    <input class="submitbtn" type="submit" value="Complete Booking">
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Copyright &copy; Travel Experts Inc 2021</p>
+    </footer>   
+</body>
+
+</html>
+
+<!-- Author:Funmi Ayorinde -->

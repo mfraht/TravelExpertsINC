@@ -61,6 +61,7 @@ router.post("/create", function (req, res, next) {
   post.posttitle = req.body.posttitle;
   post.postbody = req.body.postbody;
   post.posturl = req.body.posturl;
+  
   // console.log(req.user);
   post.user = req.user._id;
   post.save((err) => {
