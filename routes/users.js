@@ -3,6 +3,8 @@ var router = express.Router();
 const { User } = require("../models/user");
 const bcrypt = require("bcryptjs");
 
+const crypto = require("crypto");
+
 const pageRegister = {
   pagetitle: "Sign-Up",
   pageheading: "Create a new account",
@@ -17,13 +19,23 @@ const pageShowPosts = {
 
 /* Sign-up page. */
 router.get("/sign-up", function (req, res, next) {
-  res.render("sign-up", pageRegister);
+
+  const id = crypto.randomInt(1, 500);
+  res.render("sign-up",  {pageRegister, userId: id });
 });
 
-router.post("/", function (req, res, next) {
+router.post("/sign-up", function (req, res, next) {
   // Create a new user object from the User Model
+  // console.log("result");
+  // const id = crypto.randomInt(1, 500);
+  
+  // user.userId = id;
+
+
+  // body.userId = id;
   const user = new User(req.body);
   const errs = user.validateSync(); // Run the model validation
+  
   if (errs) {
     return processErrors(errs, req, res);
   }
@@ -36,9 +48,9 @@ router.post("/", function (req, res, next) {
       if (err) {
         return processErrors(err, req, res);
       }
-      //console.log(result);
+      console.log(result);
       const headermessage = `Account created ${result.fname}`;
-      res.redirect("users/profile" + headermessage);
+      res.redirect("/?headermessage=" + headermessage);
     });
   });
 });
@@ -54,7 +66,7 @@ function processErrors(errs, req, res) {
   const errorArray = [];
   const errorKeys = Object.keys(errs.errors);
   errorKeys.forEach((key) => errorArray.push(errs.errors[key].message));
-  return res.render("profile", {
+  return res.render("sign-up", {
     ...pageRegister,
     errors: errorArray,
     ...req.body,

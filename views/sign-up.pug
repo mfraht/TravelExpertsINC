@@ -2,8 +2,11 @@ extends layout
 
 block content
     h1 Please Register
-    .bg-image.img1
+    .bg-image.img1(style=" max-height: 200px;")
     form.row.g-3.my-3(method='POST' action="/users/sign-up")
+        p.d-none 
+            label(for="userId")
+            input.form-control(name="userId" value= userId type="number")
         .col-md-6
             label(for="username") Username
             input.form-control(name="username" placeholder="Username" type="text")

@@ -5,25 +5,30 @@ block content
         
     .container
         
-        h2.bg-info You purchases
+        h2.bg-info Your purchases
         if !purchases
             h3 You don't have any purchases.
         else 
             .row
             each purchase in purchases
-                .card.col-sm-12
-                img.card-img-top.mx-auto(src=purchase.PackageId.image style=" max-width:50px;")              
-                h5= purchase.PackageId.name
-                h6
-                    | description: #{purchase.PackageId.description}
-                h6
-                    | Quantity : #{purchase.quantity}
-                h6
-                    | Unit Price: #{purchase.PackageId.price}
-                h6
-                    | Total Price: #{purchase.PackageId.price * purchase.quantity}
-                p.card-text
-                    form(action='/package/return/'+purchase.PackageId method='get')
-                    .col-sm-12
-                        button.btn.btn-success.col-12(type='submit') Return
+                if !purchase.PackageId.PackageId 
+                    return
+                else 
+                    .card.col-sm-12
+                    img.card-img-top.mx-auto(src=purchase.PackageId.image style=" max-width:50px;")              
+                    h5= purchase.PackageId.PkgName
+                    h6
+                        | Description: #{purchase.PackageId.PkgDesc}
+                        //- | Start Date: #{purchase.PackageId.PkgStartDate}
+                        //- | End Date: #{purchase.PackageId.PkgEndDate}
+                    h6
+                        | Quantity : #{purchase.quantity}
+                    h6
+                        | Unit Price: #{purchase.PackageId.PkgBasePrice}
+                    h6
+                        | Total Price: #{purchase.PackageId.PkgBasePrice * purchase.quantity}
+                    p.card-text
+                        form(action='/package/return/'+purchase._id method='get')
+                            .col-sm-12
+                                button.btn.btn-success.col-12(type='submit') Delete
                 

@@ -1,0 +1,81 @@
+extends layout
+
+block content
+  //- h1= title
+  h1 Welcome to #{title} 
+  //- include nav.pug
+  
+  .bg-image.img4
+  .bg-image.img5
+  .bg-image.img6
+
+  //- each pack in packages
+  if pack
+    #textcontent2.bg-text2
+      h1 #{pack.PkgName}
+      .big
+        article.packages
+          .package1
+            img#caribbean(src=pack.image alt='Beach Bar in the Caribbean')
+          .package-content
+            p.package-tags
+              span.package-tag.d-none #{pack.PackageId} 
+              span.package-tag #{pack.PkgName} | All Inclusive
+              //- span.package-tag  
+            //- h1.package-title #{pack.PkgName}
+            p.package-metadata
+              span.package-rating
+                | &starf;&starf;&starf;&starf;
+                span &star;
+              span.package-votes (12 votes)
+            p.package-desc #{pack.PkgBasePrice} CAD
+            p
+              | Cruise the Caribbean &amp; Celebrate the New Year.
+            p 
+              | Start Date: #{pack.PkgStartDate}
+            p  
+              | End Date: #{pack.PkgEndDate}
+            p 
+              | Description: #{pack.PkgDesc}
+            p.d-none
+              | AgencyCommission #{pack.PkgAgencyCommission} 
+
+            //- if user.role == "agent"
+            //-   | Agency Commission: #{pack.PkgAgencyCommission} CAD
+            p.card-text
+            form(action='/package/buy' method='post')
+              .row
+                //- .col-sm-1
+                .col-sm-12
+                  input.mx-12(type='number' name='quantity'  min=1 value=1)
+                  input(type='hidden' name="PackageId" value= pack && pack.PackageId)
+                .col-sm-1
+                  h6.text-white .
+                .col-sm-12
+                  button.btn.btn-success.col-6(type='submit') Buy
+                    img#cart(src='/images/shopping-cart.png' style=" max-height: 30px; max-width: 30px;")
+              h6.text-white .
+              if currentUser.role == "manager"
+                .row  
+                  .col-sm-6
+                    a.btn.btn-primary.col-12(href='/package/edit/'+ pack.PackageId) Edit
+                  //- .col-sm-3
+                  .col-md-6
+                    a.btn.btn-danger.col-12(href='/package/delete/'+ pack.PackageId) Delete
+
+
+
+
+            
+
+  a.btn.btn-primary.col-12(href='/') Home
+  // Author: Cody Kozlik
+
+
+
+
+
+            
+
+            
+

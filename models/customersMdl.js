@@ -41,11 +41,11 @@ const customerSchema = new mongoose.Schema({
     trim: true,
   },
   CustHomePhone: {
-    type:Number ,
+    type: Number,
     trim: true,
   },
   CustBusPhone: {
-    type:Number ,
+    type: Number,
     trim: true,
   },
   CustEmail: {
@@ -58,7 +58,7 @@ const customerSchema = new mongoose.Schema({
       message: (props) => `${props.value} is not a valid Email address.`,
     },
     AgentId: {
-      type:Number ,
+      type: Number,
       trim: true,
     },
   },

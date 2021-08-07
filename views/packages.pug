@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  //- h1= title
+  h1 Travel Packages
   //- p Welcome to #{title} 
   //- include nav.pug
   
@@ -19,7 +19,7 @@ block content
       .big
         article.packages
           .package1
-            img#caribbean(src='../images/caribbean.jpg' alt='Beach Bar in the Caribbean')
+            img.card-img-top.mx-auto(src=pack.image alt='Beach Bar in the Caribbean' style=" max-height: 200px; max-width: 200px;")
           .package-content
             p.package-tags
               span.package-tag #{pack.PkgName}| 
@@ -33,21 +33,16 @@ block content
             p.package-desc #{pack.PkgBasePrice} CAD
             p
               | Cruise the Caribbean &amp; Celebrate the New Year.
-            
-            p 
-              | Package Start Date: #{pack.PkgStartDate}
-              | Package End Date: #{pack.PkgEndDate}
-              
             h4 
-              a(href="/package/" + pack.PackageId).card-title Click for details
+              a(href="/package/details/" + pack.PackageId).card-title Click for details
             //- if user.role == "agent"
             //-   | Agency Commission: #{pack.PkgAgencyCommission} CAD
             button.package-buy(type='button')
-              img#cart(src='../images/shopping-cart.png')
-
-  a.btn.btn-primary.col-12(href='/') Home
-  // Author: Cody Kozlik
-
+              a(href="/package/details/" + pack.PackageId)
+                img#cart(src='/images/shopping-cart.png')
+    h1.text-light _
+  if currentUser && currentUser.role == "manager"
+    a.btn.btn-primary.col-12(href='/package/add') ADD
 
 
 

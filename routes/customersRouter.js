@@ -9,7 +9,7 @@ router.get("/", function (req, res, next) {
   // req.session.msg = null; // Delete the message, as we no longer need it
   customer
     .find()
-    // .populate("user") //This populates the user id with actual user information!
+    .populate("user") //This populates the user id with actual user information!
     .exec(function (err, customers) {
       console.log(customers);
       if (err) throw err;

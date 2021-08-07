@@ -15,6 +15,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.panelsStayOpen-headingTwo.acco
           if currentUser
               li.nav-item
               a.text-white.nav-link(href='/post/create') Create a Post
+              //- a.text-white.nav-link(href='/post/create') Create a Post
           if currentUser && currentUser.role == "manager"
               li.nav-item
               a.text-white.nav-link(href='/data') Performance Data

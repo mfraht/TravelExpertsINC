@@ -4,7 +4,11 @@ var router = express.Router();
 const { Package } = require("../models/package");
 const { Purchase } = require("../models/purchase");
 
+const { customer } = require("../models/customersMdl");
+const bcrypt = require("bcryptjs");
 //const bcrypt = require("bcryptjs");
+
+
 
 /* GET the add form. */
 router.get("/add", function (req, res, next) {
@@ -15,21 +19,25 @@ router.get("/add", function (req, res, next) {
 router.post("/add", function (req, res, next) {
   const data = req.body;
   const pack = new Package(data);
+  pack._id = pack.PackageId;
   // Make sure the image starts with /imagaes/, or add it to the image path
   if (pack.image && !pack.image.includes("/images/"))
     pack.image = "/images/" + pack.image;
-    pack.save(function (err) {
+    
+  pack.save(function (err) {
     // Create a new record in the DB
     if (err) return processErrors(err, "packageadd", req, res, { add: true });
-    res.redirect("/"); // Always redirect to another page after you process the form submission
+    res.redirect("/package"); // Always redirect to another page after you process the form submission
   });
 });
 
 /* GET the Edit form with given a package Id. */
 router.get("/edit/:PackageId", function (req, res, next) {
   const PackageId = req.params.PackageId;
-  Package.findById(PackageId, (err, pack) => {
+
+  Package.findOne({ PackageId: PackageId }, (err, pack) => {
     if (err) console.log(err);
+    
     res.render("packageadd", { pack, add: false });
   });
 });
@@ -43,7 +51,7 @@ router.post("/edit/:PackageId", function (req, res, next) {
         add: false,
         pack: { ...req.body, _id: PackageId },
       });
-      Package.findByIdAndUpdate(PackageId, req.body, function (err) {
+    Package.findByIdAndUpdate(PackageId, req.body, function (err) {
       if (err)
         return processErrors(err, "packageadd", req, res, { add: false });
       res.redirect("/package/details/" + PackageId);
@@ -54,20 +62,31 @@ router.post("/edit/:PackageId", function (req, res, next) {
 /* Delete a book, given its Id. */
 router.get("/delete/:PackageId", function (req, res, next) {
   const PackageId = req.params.PackageId;
+  // console.log(PackageId);
   Package.findByIdAndDelete(PackageId, (err) => {
     if (err) console.log(err);
-    //req.session.msg = `Package deleted ${PackageId}`;
+    req.session.msg = `Package ${PackageId} is deleted`;
+    // message: (props) => `${props.value} is not a valid Email address.`,
     res.redirect("/");
   });
 });
 
-
+// /* GET the Package details page, for the given Package Id. */
+// router.get("/details/:PackageId", function (req, res, next) {
+//   const PackageId = req.params.PackageId;
+//   Package.findById({ PackageId }, (err, pack) => {
+//     if (err) console.log(err);
+//     console.log(pack);
+//     res.render("packagedetails", { pack });
+//   });
+// });
+/* Process the package return, sent as GET request, for the given package Id. */
 
 /* GET Packages listing. */
 router.get("/", function (req, res, next) {
   //console.log("packages");
   Package.find().exec(function (err, packages) {
-    //console.log(customers);
+    //console.log(packages);
     if (err) throw err;
     res.render("packages", { packages: packages });
   });
@@ -76,54 +95,73 @@ router.get("/", function (req, res, next) {
 });
 
 // Shows a single package
-router.get("/:purl", function (req, res, next) {
+router.get("/details/:purl", function (req, res, next) {
   const packurl = req.params.purl;
   Package.findOne({ PackageId: packurl }, (err, package) => {
     // console.log(package)
-    res.render("packagedetails", { blogpackage: package });
+    res.render("packagedetails", { pack: package });
   });
 });
-
-
 
 // Process the buy Package data
 router.post("/buy", function (req, res, next) {
   const purchase = new Purchase();
-  purchase.userId = 3;
-  PackageId = purchase.PackageId = req.body.PackageId;
+  
+  // post.user = req.user._id;
+  purchase.userId = req.user.userId;
+  
+  // purchase.userId = 3;
+  purchase.PackageId = req.body.PackageId;
   purchase.quantity = req.body.quantity;
+
   purchase.save(function (err) {
-    if (err) return processErrors(err, "package", req, res);
-    res.redirect("/package/purchases"); //package_s/purchases
+    if (err) return processErrors(err, "packagedetails", req, res, req.body);
+    res.redirect("/package/purchases/" + purchase.userId); //package_s/purchases
   });
 });
 
-
 /* GET the purchases page. */
-router.get("/purchases/", function (req, res, next) {
-  console.log("I'm in purchases");
-  Purchase.findOne({ userId: 3 })
+router.get("/purchases/:userId", function (req, res, next) {
+
+  const userId = req.params.userId;
+  req.session.userId = userId;
+  
+
+  Purchase.find( {userId: userId} )
     // Replace the PackageId with the corresponding Package object from the Packages collection(table)
     .populate("PackageId")
     .exec((err, purchases) => {
       if (err) console.log(err);
-      console.log(purchases);
+      // console.log(purchases);
       res.render("purchases", { purchases });
     });
 });
 
+// // Show all posts for given username
+// router.get("/auth/:uname", function (req, res, next) {
+//   // Using the given username paramter, find the user(auther) object from the DB
+//   // Use the user _id from the user object, to find all posts for the _id
+//   User.findOne({ username: req.params.uname }, (err, author) => {
+//     if (err) return processErrors(err, "blog", req, res);
+//     Post.find({ user: author._id }, (err, posts) => {
+//       if (err) return processErrors(err, "blog", req, res);
+//       res.render("blog-author", { user: author.username, blogPosts: posts });
+//     });
+//   });
+// });
 
 
+router.get("/return/:purchase_id", function (req, res, next) {
+  const purchase_id = req.params.purchase_id;
+  // console.log(`PackageId is ${purchase_id}`);
+  
+    const userID  = req.session.userId
 
-
-
-
-
-
-
-
-
-
+    Purchase.findByIdAndDelete({ _id: purchase_id }, (err) => {
+    if (err) console.log(err);
+    res.redirect("/package/purchases/" + userID); // Redirect to the purchases page
+  });
+});
 
 function processErrors(errs, pageTemplate, req, res, data) {
   // If there are errors from the Model schema
