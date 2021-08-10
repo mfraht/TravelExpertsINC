@@ -8,8 +8,10 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var postRouter = require("./routes/post");
 
-var customersRouter = require("./routes/customersRouter");
+var customersRouter = require("./routes/customer");
 var packagesRouter = require("./routes/package");
+// var dataRouter = require("./routes/data-proxy");
+
 
 const mongoSanitize = require("express-mongo-sanitize");
 
@@ -71,8 +73,9 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/post", postRouter);
 
-app.use("/customers", customersRouter);
+app.use("/customer", customersRouter);
 app.use("/package", packagesRouter);
+// app.use("/data-proxy", dataRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

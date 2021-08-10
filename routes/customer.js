@@ -1,21 +1,27 @@
 var express = require("express");
 var router = express.Router();
-const { customer } = require("../models/customersMdl");
+const { Customer } = require("../models/customersMdl");
 const bcrypt = require("bcryptjs");
 
 router.get("/", function (req, res, next) {
   // const message = req.query.msg;
   // const message = req.session.msg; // Read the message from the session variable
   // req.session.msg = null; // Delete the message, as we no longer need it
-  customer
-    .find()
-    .populate("user") //This populates the user id with actual user information!
-    .exec(function (err, customers) {
-      console.log(customers);
-      if (err) throw err;
-      res.render("customers", { customers: customers });
+  Customer.find().exec(function (err, customers) {
+    //console.log(packages);
+    if (err) throw err;
+    res.render("customers", { customers: customers });
+  
+  // customer
+  //   .find()
+  //   .populate("user") //This populates the user id with actual user information!
+  //   .exec(function (err, customers) {
+  //     console.log(customers);
+  //     if (err) throw err;
+  //     res.render("customers", { customers: customers });
     });
 });
+/* Sign-up page. */
 
 // const pageRegister = {
 //   pagetitle: "Sign-Up",

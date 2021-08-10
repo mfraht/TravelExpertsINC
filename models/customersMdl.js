@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 
 const customerSchema = new mongoose.Schema({
+  _id: Number,
   CustomerId: {
     type: Number,
     required: "CustomerId is required",
@@ -66,4 +67,4 @@ const customerSchema = new mongoose.Schema({
 
 customerSchema.plugin(uniqueValidator);
 // Create a model User using the userSchema
-module.exports.customer = mongoose.model("customer", customerSchema);
+module.exports.Customer = mongoose.model("customer", customerSchema);

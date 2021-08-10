@@ -5,6 +5,12 @@ block content
     .bg-image.img1(style=" max-height: 200px;")
     form.row.g-3.my-3(method='POST' action="/users/sign-up")
         p.d-none 
+            label(for="_id")
+            input.form-control(name="_id" value= userId type="number")
+        p.d-none 
+            label(for="customerId")
+            input.form-control(name="customerId" value= userId type="number")
+        p.d-none 
             label(for="userId")
             input.form-control(name="userId" value= userId type="number")
         .col-md-6

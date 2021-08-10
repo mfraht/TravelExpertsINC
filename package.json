@@ -8,6 +8,7 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@popperjs/core": "^2.9.3",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
     "crypto": "^1.0.1",

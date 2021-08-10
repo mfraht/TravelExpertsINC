@@ -7,7 +7,7 @@ html
     meta(name='viewport' content='width=device-width, initial-scale=1')
     //- Bootstrap CSS
     link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
-
+    
     link(rel='stylesheet', href='/stylesheets/style.css')
     //- title Caribbean New Year
     //- <link rel="stylesheet" href="../packages.css">
@@ -15,11 +15,7 @@ html
     link(rel='stylesheet' href='/stylesheets/package1.css')
     //- link(rel='stylesheet' href='../stylesheets/new_packages.css')
 
-    //- link(rel='stylesheet' href='../stylesheets/package2.css')
-    //- link(rel='stylesheet' href='../stylesheets/package3.css')
-    //- link(rel='stylesheet' href='../stylesheets/package4.css')
-
-
+  
   body
     h5 
       ul
@@ -30,13 +26,33 @@ html
             a.text-white.nav-link(href='/package') Travel Packages
         
         if currentUser && currentUser.role == "manager"
+          //- li.nav-item.dropdown
+          //-   a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+          //-     | Adminstration
+          //-   ul.dropdown-menu(aria-labelledby='navbarDropdown')
+          //-     li
+          //-       a.dropdown-item(href='/package/add') Create a Package
+          //-     li
+          //-       a.dropdown-item(href='/customer') Customers
+          //-     li
+          //-       a.dropdown-item(href='/users') Users
+          //-     li
+          //-       hr.dropdown-divider
+          //-     li
+          //-       a.dropdown-item(href='/data') Performance Data
+          
+          
           li(style='float:right')
             a.text-white.nav-link(href='/data') Performance Data
           li(style='float:right')
-            a.text-white.nav-link(href='/customers') Customers  
+            a.text-white.nav-link(href='/users') Users  
+          li(style='float:right')
+            a.text-white.nav-link(href='/customer') Customers  
           li.nav-item
               a.text-white.nav-link(href='/package/add') Create a Package
         if currentUser
+          li(style='float:right')
+            a.text-white.nav-link(href='/users/userprofile/' + currentUser.userId) Profile
           li(style='float:right')
             a.text-white.nav-link(href='/package/purchases/' + currentUser.userId) Cart
           li.nav-item
@@ -83,3 +99,8 @@ html
     // Optional JavaScript; choose one of the two!
     // Option 1: Bootstrap Bundle with Popper
     script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous')
+    script(type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js')
+    script(type='text/javascript' src='http://code.jquery.com/jquery-migrate-1.2.1.min.js')
+    script(type='text/javascript' src='https://code.jquery.com/jquery.js')
+    script(type='text/javascript' src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+    

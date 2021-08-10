@@ -10,8 +10,9 @@ if !hideLogin
                     input.form-control(name="password" type="password" placeholder="Password")
                 li
                     button.btn.btn-primary.mb-2 Log In
-                li.offset-1
-                    a.float-end.bg-secondary(href="/users/sign-up").button.btn.btn-primary.mb-2 Register
+                if !currentUser
+                    li.offset-1
+                        a.float-end.bg-secondary(href="/users/sign-up").button.btn.btn-primary.mb-2 Register
                     
 
     //- .bg-secondary

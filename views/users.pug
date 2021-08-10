@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    .bg-image.img1
+    .container
+        h2 All users
+            each user in users    
+                h1 #{user.CustFirstName} #{user.CustLastName}
+                .big
+                    article.packages.justify-content-center            
+                        .row
+                            .card.col-12.border-danger.bg-light.bg-gradient
+                                h5.card-text
+                                    | CustomerId: #{user.userId}
+                                h5.card-text
+                                    | CustFirstName: #{user.fname}
+                                h5.card-text
+                                    | CustLastName: #{user.lname}
+                                h5.card-text
+                                    | CustAddress: #{user.userAddress} 
+                                h5.card-text
+                                    | CustCity: #{user.userCity}
+                                h5.card-text
+                                    | CustProv: #{user.userProv}
+                                h5.card-text
+                                    | CustPostal: #{user.userPostal}
+                                h5.card-text
+                                    | CustCountry: #{user.userCountry}
+                                h5.card-text
+                                    | CustHomePhone: #{user.userHomePhone}
+                                h5.card-text
+                                    | CustBusPhone: #{user.userBusPhone}
+                                h5.card-text
+                                    | CustEmail: #{user.email}
+                                h5.card-text
+                                    | AgentId: #{user.AgentId}
+                                h5.card-text
+                                    a.btn.btn-info(target='__blank' href='/users/userprofile/'+ user.userId) User Profile
+        a.btn.btn-primary.col-12(href='/') Home Page
+

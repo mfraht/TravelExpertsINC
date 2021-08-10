@@ -1,8 +1,11 @@
 // Using Node.js `require()`
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
+const { Agent } = require("./agent");
+const { Customer } = require("./customersMdl");
 
 const userSchema = new mongoose.Schema({
+  _id: Number,
   userId: {
     type: Number,
     required: "userId is required",
@@ -18,15 +21,45 @@ const userSchema = new mongoose.Schema({
   },
   fname: {
     type: String,
-    required: "First name is required",
+    required: "Username First name is required",
     trim: true,
   },
   lname: {
     type: String,
     trim: true,
   },
+  userAddress: {
+    type: String,
+    trim: true,
+  },
+  userCity: {
+    type: String,
+    trim: true,
+  },
+  userProv: {
+    type: String,
+    trim: true,
+  },
+  userPostal: {
+    type: String,
+    trim: true,
+  },
+  userCountry: {
+    type: String,
+    trim: true,
+  },
+  userHomePhone: {
+    type: Number,
+    trim: true,
+    // default: 0,
+  },
+  userBusPhone: {
+    type: Number,
+    trim: true,
+  },
   email: {
     type: String,
+    required: "Please enter your email",
     trim: true,
     validate: {
       validator: function (v) {
@@ -54,6 +87,16 @@ const userSchema = new mongoose.Schema({
     trim: true,
     default: "customer",
   },
+  customerId: { type: Number, ref: "Customer"  },
+  agentId: { type: Number, ref: "Agent", default: 2 },
+});
+
+userSchema.virtual("userDetails").get(async function () {
+  if (this.role === "customer") {
+    return await Customer.findById(this.customerId);
+  } else {
+    return await Agent.findById(this.agentId);
+  }
 });
 
 userSchema.plugin(uniqueValidator);
