@@ -6,8 +6,10 @@ block content
     .container
         
         h2.bg-info Your purchases
-        if !purchases || !currentUser
+        if !purchases
             h3 You don't have any purchases.
+        else if !currentUser
+            h3 Login first please
         else 
             .row
             each purchase in purchases

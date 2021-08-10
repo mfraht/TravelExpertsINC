@@ -183,8 +183,12 @@ router.get("/return/:purchase_id", function (req, res, next) {
             req.session.msg = `Package "${Package.PkgName}" is deleted`;  
         if (err) console.log(err);
         });
-        else if(diff < 0)
-          req.session.msg = `Package "${Package.PkgName}" start date is passed already`;
+        else if(diff < 0) {
+          req.session.msg = `Package "${Package.PkgName}" start date is passed already, and it is deleted from your cart`;
+          Purchase.findByIdAndDelete({ _id: purchase_id }, (err) => {
+            if (err) console.log(err);
+          });  
+        }
         else 
           req.session.msg = `Package "${Package.PkgName}" can not be cancelled as it is less than 24 hours cancellation`;
         res.redirect("/package/purchases/" + userID); // Redirect to the purchases page
