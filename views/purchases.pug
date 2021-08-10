@@ -6,7 +6,7 @@ block content
     .container
         
         h2.bg-info Your purchases
-        if !purchases
+        if !purchases || !currentUser
             h3 You don't have any purchases.
         else 
             .row
@@ -14,13 +14,13 @@ block content
                 if !purchase.PackageId.PackageId 
                     return
                 else 
-                    .card.col-sm-12
+                    .card.col-sm-6
                     img.card-img-top.mx-auto(src=purchase.PackageId.image style=" max-width:50px;")              
                     h5= purchase.PackageId.PkgName
                     h6
                         | Description: #{purchase.PackageId.PkgDesc}
                         //- | Start Date: #{purchase.PackageId.PkgStartDate}
-                        //- | End Date: #{purchase.PackageId.PkgEndDate}
+                        //- | End Date: #{purchase.PackageId.PkgEndDate}btn-success
                     h6
                         | Quantity : #{purchase.quantity}
                     h6
@@ -28,7 +28,12 @@ block content
                     h6
                         | Total Price: #{purchase.PackageId.PkgBasePrice * purchase.quantity}
                     p.card-text
-                        form(action='/package/return/'+purchase._id method='get')
-                            .col-sm-12
-                                button.btn.btn-success.col-12(type='submit') Delete
+                            //- form(action='/package/'+purchase.PackageId.PackageId method='submit')
+                            .col-sm-3
+                                //- button.btn.btn-danger.col-3(type='submit') Delete
+                                a.btn.btn-danger(target='__blank' href='/package/purchasesdelete/'+purchase._id) Delete
+            p.card-text
+                form(action='/package/pay/' method='get')
+                    .col-sm-6
+                        button.btn.btn-success.col-6(type='submit') Pay
                 

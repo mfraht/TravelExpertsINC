@@ -150,6 +150,20 @@ router.get("/purchases/:userId", function (req, res, next) {
 //   });
 // });
 
+router.get("/purchasesdelete/:purchase_id", function (req, res, next) {
+  const purchase_id = req.params.purchase_id;
+  // console.log(`PackageId is ${purchase_id}`);
+    const userID  = req.session.userId
+    Purchase.findById({ _id: purchase_id }, (err, purchase) => {
+      if (err) console.log(err);
+      PackageId = purchase.PackageId;
+      Package.findOne({ PackageId: PackageId }, (err, Package) => {
+        if (err) console.log(err);
+        // req.session.msg = `Are you sure you want to delete this purchase ${Package.PkgName}?`;
+      res.render("purchasesdelete", {purchase, Package}); // Redirect to the purchases delete page
+      });
+    });
+});
 
 router.get("/return/:purchase_id", function (req, res, next) {
   const purchase_id = req.params.purchase_id;
@@ -166,13 +180,13 @@ router.get("/return/:purchase_id", function (req, res, next) {
         console.log(`difference date ${diff}`);
         if (diff > 24)
           Purchase.findByIdAndDelete({ _id: purchase_id }, (err) => {
-            req.session.msg = `Package ${PackageId} is deleted`;  
+            req.session.msg = `Package "${Package.PkgName}" is deleted`;  
         if (err) console.log(err);
         });
         else if(diff < 0)
-          req.session.msg = `Package ${PackageId} start date is passed already`;
+          req.session.msg = `Package "${Package.PkgName}" start date is passed already`;
         else 
-          req.session.msg = `Package ${PackageId} can not be cancelled as it is less than 24 hours cancellation`;
+          req.session.msg = `Package "${Package.PkgName}" can not be cancelled as it is less than 24 hours cancellation`;
         res.redirect("/package/purchases/" + userID); // Redirect to the purchases page
     });
   });
