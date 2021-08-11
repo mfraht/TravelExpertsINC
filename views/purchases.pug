@@ -24,18 +24,18 @@ block content
                         //- | Start Date: #{purchase.PackageId.PkgStartDate}
                         //- | End Date: #{purchase.PackageId.PkgEndDate}btn-success
                     h6
-                        | Quantity : #{purchase.quantity}
+                        | Traveler Count : #{purchase.TravelerCount}
                     h6
                         | Unit Price: #{purchase.PackageId.PkgBasePrice}
                     h6
-                        | Total Price: #{purchase.PackageId.PkgBasePrice * purchase.quantity}
+                        | Total Price: #{purchase.PackageId.PkgBasePrice * purchase.TravelerCount}
                     p.card-text
-                            //- form(action='/package/'+purchase.PackageId.PackageId method='submit')
-                            .col-sm-3
-                                //- button.btn.btn-danger.col-3(type='submit') Delete
-                                a.btn.btn-danger(target='__blank' href='/package/purchasesdelete/'+purchase._id) Delete
-            p.card-text
-                form(action='/package/pay/' method='get')
-                    .col-sm-6
-                        button.btn.btn-success.col-6(type='submit') Pay
+                        .col-sm-3
+                            a.btn.btn-danger(target='__blank' href='/package/purchasesedit/'+purchase._id) Edit
+                        .col-sm-3
+                            a.btn.btn-danger(target='__blank' href='/package/purchasesdelete/'+purchase._id) Delete
+                    p.card-text
+                        form(action='/package/payment/'+purchase._id method='get')
+                            .col-sm-6
+                                button.btn.btn-success.col-6(type='submit') Pay
                 

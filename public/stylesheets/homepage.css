@@ -1,0 +1,240 @@
+@charset "UTF-8";
+
+* {
+  /* border:  2px magenta solid; */
+  box-sizing: border-box;
+  
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #00c2d2;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #00c2d2;
+}
+
+.active {
+  background-color: #00b2c1
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.bg-image {
+  height: 75%;   
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* -----------------Banner----------------- */
+.banner {
+	background-image: url("../images/img9.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	padding: 8vw 10vw;
+}
+.herotext {
+	width: 100%;
+}
+.banner h1 {
+	color:white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.banner h2 { color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;	
+}
+
+/* -----------------body-----------*/
+/*---------Style the form---------*/
+
+.flight_form {
+    height: 75%;   
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #00c2d2;
+}  
+
+.flight_form h3{ color:white;
+    margin-left: 5%;
+    padding-top: 40px;
+}
+.trip_type{
+    color: aliceblue;
+}
+.grid-container {
+	display: grid;
+} 
+.location {color: white;
+}
+
+input[type = date] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box; 
+    font-size: 1.25vw;
+}  
+
+ 
+select{width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-position: 70px 70px;
+    font-size: 1.25vw;
+}
+
+.flight-wrapper {
+  position: relative;
+}
+
+.flight-wrapper::before {
+  content: url(../images/plane.png);
+  top: 20px;
+  left: 1px;
+  transform: scale(5%);
+  transform-origin: top left;
+  position: absolute;
+}
+
+input[type = submit] {
+    width: 20%;
+    padding: 12px 20px;
+    margin:10px 35%;
+    box-sizing: border-box; 
+    border-radius: 10px;
+    font-size: 1.25vw;
+}
+
+
+/* Style the About Us Area */
+
+.bg_image {
+    height: 75%;   
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+  
+.img8 { background-image: url("../images/img8.jpeg");}
+.img10 { background-image: url("../images/img10.jpg"); }
+  
+  
+
+.grid-container{
+	grid-area: intro;
+	background-color: #00c2d2;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+.about h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 25px;
+}
+.about p{
+    text-align: center;
+    width: auto;
+    padding: 16px 20px;
+}
+.contact_details{ text-align: center;
+  width: auto;
+  padding: 16px 20px;
+}
+/* Style the Confirmation Page Form */
+.traveler_info{
+  background-color:azure;
+  border: none;
+  padding: 2vw 8vw;
+  font-size: large;
+}
+
+.traveler_info h2{
+  font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+  font-size: 30px;
+}
+.title-p{width: 30%;
+  font-size: 1.25vw;
+}
+input[type = text] {width: 20%;
+font-size: 1.25vw;
+}
+input[type = email] {width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box; 
+  font-size: 1.25vw;
+}
+input[type = tel] {width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box; 
+  font-size: 1.25vw;
+}
+input[class = roundbtn] {
+  background-color:#00c2d2;
+}
+
+.complete_booking {
+  background-color: aliceblue;
+}
+li[class = review] {
+  background-color: aliceblue;
+  float: none;
+}
+
+input[class = submitbtn] { background-color: rgb(13, 216, 13);
+  font-size: larger;
+  font-weight: 700;
+  text-align: center;
+}
+.comp_button{background-color: aliceblue;
+  padding: none;
+}
+
+/* Style the footer */
+
+footer {
+	padding: 1vw 2vw;
+	background-color:#00c2d2;
+	color: white;
+	font-size: 14px;
+}
+footer a {
+	color: aliceblue;
+	text-decoration: none;
+}
+footer a:hover {
+	color:darksalmon;
+}
+
+/* <!-- Author:Funmi Ayorinde --> */

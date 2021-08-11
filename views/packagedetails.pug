@@ -47,8 +47,8 @@ block content
               .row
                 //- .col-sm-1
                 .col-sm-12
-                  input.mx-12(type='number' name='quantity'  min=1 value=1) 
-                  label() Number of travellers
+                  input.mx-12(type='number' name='TravelerCount'  min=1 value=1) 
+                  label()  Number of travellers
                   input(type='hidden' name="PackageId" value= pack && pack.PackageId)
                 .col-sm-1
                   h6.text-white .
@@ -56,7 +56,7 @@ block content
                   button.btn.btn-success.col-6(type='submit') Buy
                     img#cart(src='/images/shopping-cart.png' style=" max-height: 30px; max-width: 30px;")
               h6.text-white .
-              if currentUser.role == "manager"
+              if currentUser && currentUser.role == "manager"
                 .row  
                   .col-sm-6
                     a.btn.btn-primary.col-12(href='/package/edit/'+ pack.PackageId) Edit

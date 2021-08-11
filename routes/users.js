@@ -52,9 +52,6 @@ router.post("/sign-up", function (req, res, next) {
     if (err) throw err;
     // Replace the plain password with the hashed password
     user.password = hashedPassword;
-    // Generate a random number for the customer Id
-    // const custId = crypto.randomInt(1, 500);
-    // //  Create a customer object
     const custId = req.session.custId;
 
     const customer = new Customer();
@@ -74,9 +71,6 @@ router.post("/sign-up", function (req, res, next) {
         if (err) return processErrors(err, "sign-up", req, res, req.body);
         res.redirect("/");
       });
-      //console.log(result);
-      // const headermessage = `Account created ${result.fname}`;
-      // res.redirect("/?headermessage=" + headermessage);
     });
   });
 });
@@ -95,9 +89,7 @@ router.get("/useradddetails/:userId", function (req, res, next) {
   });
 });
 
-// router.get("/add", function (req, res, next) {
-//   res.render("userprofileadd", { add: true });
-// });
+
 
 // Process the added user profile data
 router.post("/useradddetails/:userId", function (req, res, next) {
@@ -218,10 +210,6 @@ router.post("/switchrole/:userId", function (req, res, next) {
     console.log("->-> Line 218");
     console.log(data.role);
 
-    // const user = new User(data);
-    // console.log(user);
-    //const userId = user.userId;
-    // Make sure the image starts with /imagaes/, or add it to the image path
     if (!req.user || req.user.role !== "manager") {
       req.session.msg = "You are not allowed to change user roles.";
       return res.redirect("/");
@@ -237,24 +225,11 @@ router.post("/switchrole/:userId", function (req, res, next) {
       }
       res.redirect("/");
     });
-      // res.render("switchrole", { user, add: add }); //{ user: user, add: add }
   });
 
   
   
 });
-
-// router.get("/switchrole/:userId", function (req, res, next) {
-//   const userId = req.params.userId;
-//   var add = true;
-//   User.findOne({ userId: userId }, (err, user) => {
-//     if (err) console.log(err);
-//     if (parseInt(user.userHomePhone)) {
-//       add = false;
-//     }
-//     res.render("switchrole", { user, add: add });
-//   });
-// });
 
 /* Switch the user role. */
 router.get("/switchnewrole/:userId", function (req, res, next) {
@@ -305,6 +280,7 @@ router.get("/switchnewrole/:userId", function (req, res, next) {
 //   });
 // });
 
+//  
 router.get("/userprofile/:userId", function (req, res, next) {
   console.log("->-> Line 295");
   const userId = req.params.userId;
@@ -330,6 +306,8 @@ router.get("/userprofile/:userId", function (req, res, next) {
     res.render("userprofile", { user: user, add: add });
   });
 });
+
+
 
 function processErrors(errs, pageTemplate, req, res, data) {
   // If there are errors from the Model schema

@@ -17,17 +17,13 @@ block content
                         //- | Start Date: #{purchase.PackageId.PkgStartDate}
                         //- | End Date: #{purchase.PackageId.PkgEndDate}btn-success
                     h6
-                        | Quantity : #{purchase.quantity}
+                        | Traveler Count : #{purchase.TravelerCount}
                     h6
                         | Unit Price: #{Package.PkgBasePrice}
                     h6
-                        | Total Price: #{Package.PkgBasePrice * purchase.quantity}
+                        | Total Price: #{Package.PkgBasePrice * purchase.TravelerCount}
                     p.card-text
                         form(action='/package/return/'+purchase._id method='get')
                             .col-sm-3
                                 button.btn.btn-danger.col-3(type='submit') Delete
-            p.card-text
-                form(action='/package/pay/' method='get')
-                    .col-sm-6
-                        button.btn.btn-success.col-6(type='submit') Pay
                 

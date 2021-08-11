@@ -88,16 +88,18 @@ block content
                 .col-sm-9.text-secondary
                   | #{user.userAddress}, #{user.userCity}, #{user.userProv}, #{user.userCountry}
             hr
-            .row
-              .col-sm-6
-                a.btn.btn-info(target='__blank' href='/users/useradddetails/'+ user.userId) 
-                  if currentUser
+            .row 
+              if currentUser
+                .col-sm-3
+                  a.btn.btn-info(target='__blank' href='/users/useradddetails/'+ user.userId)   
                     if add
                       | Create your profile
                     else 
                       | Edit
+                .col-sm-3
+                  a.btn.btn-info(target='__blank' href='/package/userbookings/'+ user.userId) Bookings
               if currentUser && currentUser.role == "manager"
-                .col-sm-6
+                .col-sm-3
                   a.btn.btn-info(target='__blank' href='/users/switchrole/'+ user.userId) 
                     | Change the role
         .row.gutters-sm
@@ -143,81 +145,3 @@ block content
                 small Backend API
                 .progress.mb-3(style='height: 5px')
                   .progress-bar.bg-primary(role='progressbar' style='width: 66%' aria-valuenow='66' aria-valuemin='0' aria-valuemax='100')
-
-  //- h1 Welcome #{user.PkgName} 
-  //- //- include nav.pug
-  
-  //- .bg-image.img4
-  //- .bg-image.img5
-  //- .bg-image.img6
-
-  //- //- each user in users
-  //- if user
-  //-   #textcontent2.bg-text2
-  //-     h1 #{user.userName}
-  //-     .big
-  //-       article.packages
-  //-         .package1
-  //-           img#caribbean(src=user.image alt='user picture')
-  //-         .package-content
-  //-           p.package-tags
-  //-             span.package-tag.d-none #{user.userId} 
-  //-             span.package-tag #{user.PkgName}
-  //-             //- span.package-tag  
-  //-           //- h1.package-title #{pack.PkgName}
-  //-           p.package-metadata
-  //-             span.package-rating
-  //-               | &starf;&starf;&starf;&starf;
-  //-               span &star;
-  //-             span.package-votes (12 votes)
-  //-           p.package-desc #{users.PkgBasePrice} CAD
-  //-           p
-  //-             | Cruise the Caribbean &amp; Celebrate the New Year.
-  //-           p 
-  //-             | Start Date: #{user.PkgStartDate}
-  //-           p  
-  //-             | End Date: #{user.PkgEndDate}
-  //-           p 
-  //-             | Description: #{user.PkgDesc}
-  //-           p.d-none
-  //-             | AgencyCommission #{user.PkgAgencyCommission} 
-
-  //-           //- if user.role == "agent"
-  //-           //-   | Agency Commission: #{pack.PkgAgencyCommission} CAD
-  //-           p.card-text
-  //-           form(action='/users/buy' method='post')
-  //-             .row
-  //-               //- .col-sm-1
-  //-               .col-sm-12
-  //-                 input.mx-12(type='number' name='quantity'  min=1 value=1)
-  //-                 input(type='hidden' name="userId" value= user && user.userageId)
-  //-               .col-sm-1
-  //-                 h6.text-white .
-  //-               .col-sm-12
-  //-                 button.btn.btn-success.col-6(type='submit') Buy
-  //-                   img#cart(src='/images/shopping-cart.png' style=" max-height: 30px; max-width: 30px;")
-  //-             h6.text-white .
-  //-             if currentUser.role == "manager"
-  //-               .row  
-  //-                 .col-sm-6
-  //-                   a.btn.btn-primary.col-12(href='/users/edit/'+ user.userId) Edit
-  //-                 //- .col-sm-3
-  //-                 .col-md-6
-  //-                   a.btn.btn-danger.col-12(href='/users/delete/'+ user.userId) Delete
-
-
-
-
-            
-
-  //- a.btn.btn-primary.col-12(href='/') Home
-  //- // Author: Cody Kozlik
-
-
-
-
-
-            
-
-            
-

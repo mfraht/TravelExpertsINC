@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    h1= title
+        
+    .container
+        
+        if !bookings.BookingDate
+            h3 You don't have any bookings.
+        else if !currentUser
+            h3 Login first please
+        else 
+            h2.bg-info Your bookings
+            .row
+            each booking in bookings
+                if !booking.PackageId.PackageId 
+                    return
+                else 
+                    .card.col-sm-6
+                        img.card-img-top.mx-auto(src=booking.PackageId.image style=" max-width:300px;")              
+                    h4= booking.PackageId.PkgName
+                    h5
+                        |Booking Date: #{booking.BookingDate}
+                        br
+                    h6
+                        
+                        | Description: #{booking.PackageId.PkgDesc}
+                        br
+                        | Start Date: #{booking.PackageId.PkgStartDate} 
+                        br
+                        | End Date: #{booking.PackageId.PkgEndDate}
+                    h6
+                        | TravelerCount : #{booking.TravelerCount}
+                    h6
+                        | Unit Price: #{booking.PackageId.PkgBasePrice}
+                    h4
+                        | Total money paid: #{booking.PackageId.PkgBasePrice * booking.TravelerCount}
+                    hr

@@ -1,0 +1,132 @@
+extends layout
+
+block content
+    .booking_confirmation
+        form(action='/')
+            .traveler_info
+            // <legend></legend>
+            h2 Traveler's Information
+            - var count = 0;
+            p Traveller names must match government-issued photo ID exactly.
+                label(for='title') Title:
+                .title-p
+                    select#title(name='title')
+                        option(value='')
+                        option(value='') Mr.
+                        option(value='') Ms.
+                        option(value='') Mrs.
+                        option(value='') Miss
+                        option(value='') Master
+                        option(value='') Dr.
+                        option(value='') Prof.
+                br
+                label(for='fname') First name:
+                input#fname(type='text' name='fname' value='John')
+                label(for='mname') Middle name:
+                input#mname(type='text' name='mname' value='')
+                label(for='lname') Last name:
+                input#lname(type='text' name='lname' value='Doe')
+                br
+                br
+                label(for='email') Email:
+                br
+                input#email(type='email' name='email')
+                br
+                br
+                label(for='phone') Phone number:
+                br
+                input#phone(type='tel' name='phone' placeholder='123-456-7890' pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' required='')
+                br
+                br
+                label(for='country_code') Country/Territory Code:
+                .code_c
+                    select#country_code(name='country_code')
+                        option(value='') Afghanistan +93
+                        option(value='') Albania +355
+                        option(value='') Algeria +213
+                        option(value='') Bahamas +1
+                        option(value='') Canada +1
+                        option(value='') United Kingdom +44
+                        option(value='') United States of America +1
+                        option(value='') Vietnam +84
+                br
+                label(for='gender') Gender
+                br
+                input#male(type='radio' name='male' value='male')
+                label(for='male') Male
+                input#female(type='radio' name='female' value='female')
+                label(for='female') Female
+                br
+                br
+                label(for='birthday') Date of Birth:
+                br
+                input#birthday(type='date' name='birthday')
+                br
+                hr
+            while (count < (TravelerCount-1))
+                h2 Who&apos;s else travelling?
+                p Traveller names must match government-issued photo ID exactly.
+                label(for='title') Title:
+                .title-p
+                    select#title(name='title')
+                        option(value='')
+                        option(value='') Mr.
+                        option(value='') Ms.
+                        option(value='') Mrs.
+                        option(value='') Miss
+                        option(value='') Master
+                        option(value='') Dr.
+                        option(value='') Prof.
+                br
+                label(for='fname') First name:
+                input#fname(type='text' name='fname'+count value='John')
+                label(for='mname') Middle name:
+                input#mname(type='text' name='mname'+count value='')
+                label(for='lname') Last name:
+                input#lname(type='text' name='lname'+count value='Doe')
+                br
+                br
+                label(for='gender') Gender
+                br
+                input#male(type='radio' name='male' value='male')
+                label(for='male') Male
+                input#female(type='radio' name='female' value='female')
+                label(for='female') Female
+                br
+                br
+                label(for='birthday') Date of Birth:
+                br
+                input#birthday(type='date' name='birthday')
+                br
+                hr
+                - count++; 
+        //- input.roundbtn(type='submit' value='Submit')
+        .complete_booking
+            h2 Review and book your trip
+            ol.review_info
+                li.review Review your trip details to make sure the dates and times are correct.
+                li.review
+                    | Check your spelling. Flight passenger names must match government-issued photo ID
+                    | exactly.
+                li.review
+                    | Review the terms of your booking:
+                    ol(style='list-style-type:lower-roman;')
+                        li.review
+                            | We understand that sometimes plans change. We do not charge a cancel or change
+                            | fee.
+                            | When the
+                            | airline charges such fees in accordance with its own policies, the cost will be passed on to
+                            | you.
+                        li.review Please read important information regarding airline liability limitations 
+                        li.review
+                            | Prices may not include baggage fees or other fees charged directly by the
+                            | airline
+                        li.review Fares are not guaranteed until ticketed.
+            p(style="color: blue;font-family: 'Times New Roman', Times, serif;font-size: 20px;")
+                | By clicking on the
+                | button
+                | below, I acknowledge that I have reviewed the Privacy Statement and Government
+                | Travel Advice and have reviewed and accept the above Rules &amp; Restrictions and Terms of Use.
+            .comp_button
+                form(action='/package/userbooking/'+ purchase._id)
+                    input.submitbtn(type='submit' value='Complete Booking')

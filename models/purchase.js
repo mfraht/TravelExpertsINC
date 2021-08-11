@@ -10,7 +10,7 @@ const purchaseSchema = new Schema({
     unique: "The userId must be unique.",
     default: 1,
     ref: "user"},
-  quantity: Number,
+  TravelerCount: Number,
 });
 
 module.exports.Purchase = mongoose.model("Purchase", purchaseSchema);

@@ -1,0 +1,36 @@
+extends layout
+
+block content
+    h1= title
+        
+    .container
+        if !booking
+            h3 You don't have any bookings.
+        else if !currentUser
+            h3 Login first please
+        else 
+            h2.bg-info Your booking is done.
+            .row
+                //- each booking in bookings
+                if !purchase.PackageId.PackageId 
+                    return
+                else 
+                    .card.col-sm-6
+                        img.card-img-top.mx-auto(src=purchase.PackageId.image style=" max-width:300px;")              
+                    h5= purchase.PackageId.PkgName
+                    h6
+                        | Description: #{purchase.PackageId.PkgDesc}
+                        br
+                        | Start Date: #{purchase.PackageId.PkgStartDate}
+                        br
+                        | End Date: #{purchase.PackageId.PkgEndDate}
+                    h6
+                        | TravelerCount : #{booking.TravelerCount}
+                    h6
+                        | Unit Price: #{purchase.PackageId.PkgBasePrice}
+                    h4
+                        | Total money paid: #{purchase.PackageId.PkgBasePrice * booking.TravelerCount}
+                    hr
+            p.card-text
+                | To make changes or cancel your booking, please contact us.
+                
