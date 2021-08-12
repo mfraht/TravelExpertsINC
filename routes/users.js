@@ -219,7 +219,7 @@ router.post("/switchrole/:userId", function (req, res, next) {
   var add = true;
   User.findOne({ userId: userId }, (err, user) => {
     if (err) console.log(err);
-    // console.log(user.userHomePhone );
+    
     if (parseInt(user.userHomePhone)) {
       add = false;
     }
@@ -235,7 +235,8 @@ router.post("/switchrole/:userId", function (req, res, next) {
     // const userId = req.params.userId;
     const newrole = data.role;
     console.log(`New Role is ${newrole}`)
-    if (!userId) return res.redirect("/");
+    console.log(`userId is ${userId}`)
+    console.log(userId);
     switchUserRole(userId, newrole, (err) => {
       req.session.msg = `User role changed to ${newrole}`;
       if (err) {

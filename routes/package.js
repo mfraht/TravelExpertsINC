@@ -100,11 +100,11 @@ router.get("/details/:purl", function (req, res, next) {
 
 // Process the buy Package data
 router.post("/buy", function (req, res, next) {
-  // if (!req.user) {
-  //   req.session.msg = "Please log in first";
-  //   res.redirect("/package");
-  //   // return
-  // }
+  if (!req.user) {
+    req.session.msg = "Please log in first";
+    res.redirect("/package");
+    // return
+  }
 
   const purchase = new Purchase();
   // post.user = req.user._id;
