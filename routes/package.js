@@ -19,12 +19,16 @@ router.get("/add", function (req, res, next) {
 // Process the added package data
 router.post("/add", function (req, res, next) {
   const data = req.body;
+  
   const pack = new Package(data);
-  pack._id = pack.PackageId;
+  const PackageId = crypto.randomInt(1, 500) + 111000;
+  
+  pack._id = PackageId;
+  console.log(pack._id)
   // Make sure the image starts with /imagaes/, or add it to the image path
   if (pack.image && !pack.image.includes("/images/"))
     pack.image = "/images/" + pack.image;
-
+  console.log(pack._id)
   pack.save(function (err) {
     // Create a new record in the DB
     if (err) return processErrors(err, "packageadd", req, res, { add: true });
@@ -216,12 +220,7 @@ router.get("/payment/:purchaseId", function (req, res, next) {
       else
         res.render("payment", { purchase, TravelerCount: purchase.TravelerCount });
     });
-  // console.log(`PackageId is ${purchase_id}`);
-  // Purchase.findOne({ _id: purchaseId }, (err, purchase) => {
-  //   if (err) console.log(err);
-  //   console.log(`Purchases are: ${purchase}`);
-  //   console.log(`Purchases are: ${purchase.TravelerCount}`);
-  //   res.render("payment", { purchase, TravelerCount: purchase.TravelerCount });
+
   });
 });
 

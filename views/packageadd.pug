@@ -10,13 +10,11 @@ block content
     //- .col-md-3
     //-   label.form-label(for='Package_Id') Package _id
     //-   input#Package_Id.form-control(type='text' name='_id' required value= pack && pack._id)
-    .col-md-3
-      label.form-label(for='PackageId') Package Id
-      input#PackageId.form-control(type='text' name='PackageId' required value= pack && pack.PackageId)
+    
     .col-md-3
       label.form-label(for='inputname') Name
       input#inputname.form-control(type='text' name='PkgName' required value= pack && pack.PkgName)
-    .col-md-6
+    
     .col-md-3
       label.form-label(for='inputprice') Price
       input#inputprice.form-control(type='number' placeholder='0.0' step="any" name='PkgBasePrice' required  value=pack && pack.PkgBasePrice)
