@@ -1,0 +1,116 @@
+extends layout
+
+block content
+  //- h2 All Comments
+  //- if blogPost
+  //-       h3= blogPost.posttitle
+  //-       p= blogPost.postbody
+
+  .bg-image.img2( style="height: 300px; ")
+  .contact-grid-container
+        .intro.p-lr
+            h2 Contact Us
+            p(style='color: black;')
+                | Our travel brands enable every sort of traveller not just find the vacation that&apos;s ideal for them,
+                | but also get the best value every time, no matter who they are or where they&apos;re going.
+  //- form(method="GET" action="/post/create")
+  //-   button.btn.btn-success(type="submit") Create
+    
+  .container(style="background-color: lightgray")
+        if !agencies
+            | No records    
+        else    
+            h2 Agencies
+                each agency in agencies    
+                    .big
+                        article.packages.justify-content-center            
+                            .row
+                                .card.col-12.border-danger.bg-light.bg-gradient.border.border-primary                                  
+                                    h4.text-center #{agency.AgncyCity} Branch
+                                    hr
+                                    h6.d-none
+                                        | Agency ID: #{agency.AgencyId}
+                                    h6.card-text
+                                        | Agency Address: #{agency.AgncyAddress}
+                                    h6.card-text
+                                        | Agency City: #{agency.AgncyCity}
+                                    h6.card-text
+                                        | Agency Prov: #{agency.AgncyProv}
+                                    h6.card-text
+                                        | Agency Postal: #{agency.AgncyPostal}
+                                    h6.card-text
+                                        | Agency Country: #{agency.AgncyCountry}
+                                    h6.card-text
+                                        | Agency Phone: #{agency.AgncyPhone}
+                                    h6.card-text
+                                        | Agency Fax: #{agency.AgncyFax}
+
+  .container(style="background-color: lightgray")
+      if !agents
+          | No records    
+      else    
+          h2 Agents
+              each agent in agents    
+                  .big
+                      article.packages.justify-content-center            
+                          .row
+                              .card.col-12.border-danger.bg-light.bg-gradient.border.border-primary
+                                  h4.text-center #{agent.AgtFirstName} #{agent.AgtLastName}
+                                  hr
+                                  h6.d-none
+                                      | CustomerId: #{agent.AgentId}
+                                  h6.card-text
+                                      | Agent FirstName: #{agent.AgtFirstName}
+                                  h6.card-text
+                                      | Agent LastName: #{agent.AgtLastName}
+                                  h6.card-text
+                                      | Agent BusPhone: #{agent.AgtBusPhone}
+                                  h6.card-text
+                                      | Agent Email: #{agent.AgtEmail}
+                                  h6.card-text
+                                      | Agent Position: #{agent.AgtPosition}
+                                  h6.card-text
+                                      | Agency Id: #{agent.AgencyId}
+                                  h6.card-text
+                                      | Registration time: #{agent.registeredOn}
+
+
+  
+  
+  h2 Contact form
+
+  form(method='POST' action='/post/create')
+    .form-floating.m-3      
+      input#exampleFormControlInput1.form-control(type='text' placeholder='Name' name='posttitle' value=postdata && postdata.posttitle)
+      label.form-label(for='exampleFormControlInput1') Name
+    .form-floating.m-3
+      textarea#floatingTextarea.form-control(placeholder='Leave a comment here' name='postbody')= postdata && postdata.postbody
+      label(for='floatingTextarea') Comments
+    .form-floating.m-3
+      input#posturlid.form-control(type='text' placeholder='comments' name='email'  required value=postdata && postdata.posturl)
+      label(for='posturlid') Email
+      
+    button.btn.btn-primary.m-3(type='submit') Submit
+    
+    .intro.p-lr
+        h3 Contacts
+        p(style='color: black;')
+          | You can call us at the following numbers:
+        ul
+          li(style='color: black;')
+              | Local (toll-free): (800) 468-1579
+          li(style='color: black;')
+              | From abroad (charges apply): +1 414-321-0123
+
+  if currentUser && currentUser.role == "manager" 
+    if blogPosts
+      each post in blogPosts
+        .card
+          .card-body
+            a(href="/post/" + post.posturl).card-title #{post.posttitle}
+            p.card-text= post.postbody
+            if post.user
+              p 
+                | Auther: 
+                a(href='/post/auth/' + post.user.username)= post.user.fname + ' ' + post.user.lname
+

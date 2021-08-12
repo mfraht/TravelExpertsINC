@@ -32,12 +32,12 @@ router.get("/", function (req, res, next) {
 
 
 /* GET Agents contact listing. */
-router.get("/agents", function (req, res, next) {
+router.get("/post/contact", function (req, res, next) {
   //console.log("packages");
   Agent.find().exec(function (err, agents) {
     //console.log(packages);
     if (err) throw err;
-    res.render("agents", { agents });
+    res.render("/post/contact", { agents });
   });
 
   // res.render("packages", { packages });

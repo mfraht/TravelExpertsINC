@@ -20,8 +20,9 @@ block content
       h1 #{pack.PkgName}
       .big
         article.packages
-          .package1
-            img.card-img-top.mx-auto(src=pack.image alt='Beach Bar in the Caribbean' style=" max-height: 200px; max-width: 200px;")
+          .package1.d-flex.justify-content-center.text-center
+            a(href="/package/details/" + pack.PackageId)
+              img.card-img-top.mx-auto(src=pack.image alt='Beach Bar in the Caribbean' style=" max-height: 200px; max-width: 200px;").justify-content-center
           .package-content
             p.package-tags
               span.package-tag #{pack.PkgName}| 

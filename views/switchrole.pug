@@ -2,10 +2,10 @@ extends layout
 
 block content
   
-  .container
+    .container
     .main-body
-      .row
-        .col-lg-4
+      .row.gutters-sm
+        .col-md-4.mb-3
           .card
             .card-body
               .d-flex.flex-column.align-items-center.text-center
@@ -54,46 +54,30 @@ block content
                       path(d='M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z')
                     | Facebook
                   span.text-secondary #{user.username}
-      form.row.g-3(method='POST' action="")
         .col-lg-8
           .card
             .card-body
-                .row.mb-3
-                  .col-sm-3
-                    h6.mb-0 Current Role
-                  .col-sm-9.text-secondary
-                    h5 #{user.role}
-                  .col-sm-3
-                  .col-sm-3
-                    h6.mb-0 Switch Role
-                  .col-sm-9.text-secondary
-                    select.form-select(aria-label='Default select example' name = 'role')
-                      option(selected='') Role
-                      option(value='manager' ) Manager
-                      option(value='agent') Agent
-                      option(value='customer') Customer
-                .row
-                  .col-sm-3
-                  .col-sm-9.text-secondary    
-                    button.btn.btn-primary.col-12.mt-4(type='submit') Save
-        
-        
-        //- form.row.g-3(method='post' action="/users/switchnewrole/")
-        //-   .row.mb-3
-        //-     .col-sm-3
-        //-       h6.mb-0 Current Role
-        //-     .col-sm-9.text-secondary
-        //-       h5 #{user.role}
-        //-     .col-sm-3
-        //-     .col-sm-3
-        //-       h6.mb-0 Switch Role
-        //-     .col-sm-9.text-secondary
-        //-       select.form-select(aria-label='Default select example' name = 'role')
-        //-         option(selected='') Role
-        //-         option(value='manager' ) Manager
-        //-         option(value='agent') Agent
-        //-         option(value='customer') Customer
-        //- button.btn.btn-primary.col-12.mt-4(type='submit') Save
+              form.row.g-3(method='POST' action="")
+                  .row.mb-3
+                    .col-sm-3
+                      h6.mb-0 Current Role
+                    .col-sm-9.text-secondary
+                      h5 #{user.role}
+                    .col-sm-2
+                    .col-sm-3
+                      h6.mb-0 Switch Role
+                      br
+                    .col-sm-3  
+                    .col-sm-6.text-secondary.align-items-center
+                      select.form-select(aria-label='Default select example' name = 'role')
+                        option(selected='') Role
+                        option(value='manager' ) Manager
+                        option(value='agent') Agent
+                        option(value='customer') Customer
+                  .row
+                    .col-sm-1
+                    .col-sm-9.text-secondary    
+                      button.btn.btn-primary.col-6.mt-4(type='submit') Save
         .col-md-4
         .col-md-3
           a.btn.btn-primary.col-12.mt-4(href=add ? '/' : '/users/userprofile/' + (user && user.userId)) Cancel
@@ -118,64 +102,3 @@ block content
                   p Backend API
                   .progress(style='height: 5px')
                     .progress-bar.bg-info(role='progressbar' style='width: 66%' aria-valuenow='66' aria-valuemin='0' aria-valuemax='100')
-
-
-  
-  
-  //- h1= title
-  //- if add 
-  //-   h3 Add new Package
-  //- else 
-  //-   h3 Edit Package
-  //- form.row.g-3(method='POST' action="")
-  //-   //- .col-md-3
-  //-   //-   label.form-label(for='Package_Id') Package _id
-  //-   //-   input#Package_Id.form-control(type='text' name='_id' required value= pack && pack._id)
-  //-   .col-md-3
-  //-     label.form-label(for='PackageId') Package Id
-  //-     input#PackageId.form-control(type='text' name='PackageId' required value= pack && pack.PackageId)
-  //-   .col-md-3
-  //-     label.form-label(for='inputname') Name
-  //-     input#inputname.form-control(type='text' name='PkgName' required value= pack && pack.PkgName)
-  //-   .col-md-6
-  //-   .col-md-3
-  //-     label.form-label(for='inputprice') Price
-  //-     input#inputprice.form-control(type='number' placeholder='0.0' step="any" name='PkgBasePrice' required  value=pack && pack.PkgBasePrice)
-  //-   .col-md-3
-  //-     label.form-label(for='inputCommissionprice') Agency Commission Price
-  //-     input#inputCommissionprice.form-control(type='number' placeholder='0.0' step="any" name='PkgAgencyCommission' required  value=pack && pack.PkgAgencyCommission)
-  //-   .col-12
-  //-     label.form-label(for='inputdescription') Description
-  //-     textarea#inputdescription.form-control(type='text' placeholder='Day All Inclusive Vacation' name='PkgDesc' value=pack && pack.PkgDesc)
-  //-   .col-md-3
-  //-     label.form-label(for='inputstartdate') Start Date
-  //-     input#inputstartdate.form-control(type='date' placeholder='Start Date' name='PkgStartDate'  value=pack && pack.PkgStartDate)    
-  //-   .col-md-3
-  //-     label.form-label(for='inputenddate') End Date
-  //-     input#inputenddate.form-control(type='date' placeholder='End Date' name='PkgEndDate'  value=pack && pack.PkgEndDate)    
-  //-   .col-md-3
-  //-     label.form-label(for='inputimage') Image
-  //-     input#inputimage.form-control(type='text' placeholder='image' name='image'  value=pack && pack.image)
-  //-   .col-md-3
-  //-   .col-md-1
-  //-   .col-md-3
-  //-     button.btn.btn-primary.col-12.mt-4(type='submit') 
-  //-       if add
-  //-         | Add
-  //-       else 
-  //-         | Update
-  //-   .col-md-4
-  //-   .col-md-3
-  //-     a.btn.btn-primary.col-12.mt-4(href=add ? '/' : '/package/details/' + (pack && pack.PackageId)) Cancel
-  //-     //- a.btn.btn-primary.col-12.mt-4(href=add ? '/' : '/package') Cancel
-  //-     // Another way for doing the cancel button
-  //-       if add
-  //-         a.btn.btn-primary.col-12.mt-4(href= '/' ) Cancel
-  //-       else 
-  //-         a.btn.btn-primary.col-12.mt-4(href='/package/details/'+pack.PackageId) Cancel
-
-  //- .container
-  //-     if errors    
-  //-       each error in errors
-  //-           p.alert.alert-danger= error
-

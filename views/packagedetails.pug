@@ -31,10 +31,10 @@ block content
             p.package-desc #{pack.PkgBasePrice} CAD
             p
               | Cruise the Caribbean &amp; Celebrate the New Year.
-            p 
-              | Start Date: #{pack.PkgStartDate}
-            p  
-              | End Date: #{pack.PkgEndDate}
+            h6 
+              | Start : #{pack.PkgStartDate}
+            h6  
+              | End : #{pack.PkgEndDate}
             p 
               | Description: #{pack.PkgDesc}
             p.d-none
@@ -56,7 +56,7 @@ block content
                   button.btn.btn-success.col-6(type='submit') Buy
                     img#cart(src='/images/shopping-cart.png' style=" max-height: 30px; max-width: 30px;")
               h6.text-white .
-              if currentUser && currentUser.role == "manager"
+              if currentUser && (currentUser.role == "manager" || currentUser.role == "agent")
                 .row  
                   .col-sm-6
                     a.btn.btn-primary.col-12(href='/package/edit/'+ pack.PackageId) Edit

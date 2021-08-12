@@ -5,6 +5,7 @@ const { Package } = require("../models/package");
 const { Purchase } = require("../models/purchase");
 const { Booking } = require("../models/booking");
 const { Bookingdetail } = require("../models/bookingdetail");
+const { Agencie } = require("../models/agencie");
 
 const { customer } = require("../models/customersMdl");
 const bcrypt = require("bcryptjs");
@@ -196,12 +197,31 @@ router.get("/return/:purchase_id", function (req, res, next) {
 router.get("/payment/:purchaseId", function (req, res, next) {
   console.log("->-> Line 188");
   const purchaseId = req.params.purchaseId;
+  Purchase.findById({ _id: purchaseId }, (err, purchase) => {
+    PackageId = purchase.PackageId;
+    Package.findOne({ PackageId: PackageId }, (err, Package) => {
+      var a = Package.PkgStartDate;
+      console.log(`Package date ${a}, its value ${a.getTime()}`);
+      var b = new Date();
+      console.log(`current date ${b}, its value ${b.getTime()}`);
+      diff = Math.floor((a.getTime() - b.getTime()) / (1000 * 60 * 60));
+      console.log(`difference date ${diff}`);
+      if (diff < 0) {
+          req.session.msg = `Package "${Package.PkgName}" start date is passed already, and it is deleted from your cart`;
+          Purchase.findByIdAndDelete({ _id: purchaseId }, (err) => {
+            if (err) console.log(err);
+          res.redirect("/package/purchases/" + purchase.userID);
+          });
+        } 
+      else
+        res.render("payment", { purchase, TravelerCount: purchase.TravelerCount });
+    });
   // console.log(`PackageId is ${purchase_id}`);
-  Purchase.findOne({ _id: purchaseId }, (err, purchase) => {
-    if (err) console.log(err);
-    console.log(`Purchases are: ${purchase}`);
-    console.log(`Purchases are: ${purchase.TravelerCount}`);
-    res.render("payment", { purchase, TravelerCount: purchase.TravelerCount });
+  // Purchase.findOne({ _id: purchaseId }, (err, purchase) => {
+  //   if (err) console.log(err);
+  //   console.log(`Purchases are: ${purchase}`);
+  //   console.log(`Purchases are: ${purchase.TravelerCount}`);
+  //   res.render("payment", { purchase, TravelerCount: purchase.TravelerCount });
   });
 });
 
@@ -253,6 +273,19 @@ router.get("/userbookings/:userId", function (req, res, next) {
     // console.log(bookings[0].PackageId.PackageId);
     res.render("userbookings", { bookings });
   });
+});
+
+
+/* GET Agents contact listing. */
+router.get("/agencies", function (req, res, next) {
+  //console.log("packages");
+  Agencie.find().exec(function (err, agencies) {
+    //console.log(packages);
+    if (err) throw err;
+    res.render("agencies", { agencies });
+  });
+
+  // res.render("packages", { packages });
 });
 
 // Handling errors

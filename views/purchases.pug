@@ -28,12 +28,12 @@ block content
                         | Unit Price: #{purchase.PackageId.PkgBasePrice}
                     h6
                         | Total Price: #{purchase.PackageId.PkgBasePrice * purchase.TravelerCount}
-                    p.card-text
-                        .col-sm-3
-                            a.btn.btn-danger(target='__blank' href='/package/purchasesedit/'+purchase._id) Edit
-                        .col-sm-3
+                    .row
+                        //- .col-sm-3
+                        //-     a.btn.btn-danger(target='__blank' href='/package/purchasesedit/'+purchase._id) Edit
+                        .col-md-3
                             a.btn.btn-danger(target='__blank' href='/package/purchasesdelete/'+purchase._id) Delete
-                    p.card-text
+                    .row
                         form(action='/package/payment/'+purchase._id method='get')
                             .col-sm-6
                                 button.btn.btn-success.col-6(type='submit') Pay

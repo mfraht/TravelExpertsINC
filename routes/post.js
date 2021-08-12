@@ -2,7 +2,8 @@ var express = require("express");
 var router = express.Router();
 const Post = require("../models/postMdl").Post;
 const { User } = require("../models/user");
-
+const { Agent } = require("../models/agent");
+const { Agencie } = require("../models/agencie");
 /* GET all posts listing. */
 router.get("/", function (req, res, next) {
   // const message = req.query.msg;
@@ -12,7 +13,7 @@ router.get("/", function (req, res, next) {
     .populate("user") //This populates the user id with actual user information!
     .exec(function (err, posts) {
       if (err) throw err;
-      res.render("blog", { blogPosts: posts });
+      res.render("blog-author", { blogPosts: posts });
     });
 });
 
@@ -31,12 +32,12 @@ router.get("/auth/:uname", function (req, res, next) {
 
 // middleware that is specific to this router,
 // checks that the user must be logged in
-router.use((req, res, next) => {
-  //console.log('Time: ', Date.now());
-  if (!req.user) res.status(403).redirect("/");
-  //else if (req.user.role != "agent") res.status(403).redirect("/");
-  else next();
-});
+// router.use((req, res, next) => {
+//   //console.log('Time: ', Date.now());
+//   if (!req.user) res.status(403).redirect("/");
+//   //else if (req.user.role != "agent") res.status(403).redirect("/");
+//   else next();
+// });
 
 function processErrors(errs, pageTemplate, req, res) {
   // If there are errors from the Model schema
@@ -50,12 +51,22 @@ function processErrors(errs, pageTemplate, req, res) {
   });
 }
 // Show the create form
-router.get("/create", function (req, res, next) {
-  res.render("post-create");
+router.get("/contact", function (req, res, next) {
+  Agent.find().exec(function (err, agents) {
+    //console.log(packages);
+    if (err) throw err;
+    Agencie.find().exec(function (err, agencies) {
+      //console.log(packages);
+      if (err) throw err;
+      res.render("contact", { agents, agencies });
+    });
+    
+    });
+    
 });
 
 // To recieve a new post data
-router.post("/create", function (req, res, next) {
+router.post("/contact", function (req, res, next) {
   // const post = new Post(req.body);
   const post = new Post();
   post.posttitle = req.body.posttitle;
@@ -69,10 +80,12 @@ router.post("/create", function (req, res, next) {
       const errorArray = [];
       const errorKeys = Object.keys(err.errors);
       errorKeys.forEach((key) => errorArray.push(err.errors[key].message));
-      return res.render("post-create", {
+
+      return res.render("contact", {
         postdata: req.body,
         errors: errorArray,
       });
+    
     }
     // Put the thank you message in a session variable
     req.session.msg = `Thank you for posting ${req.user.fname}`;

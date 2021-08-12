@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    .bg-image.img1( style="height: 300px; ")
+    .container(style="background-color: lightgray")
+        if !agencies
+            | No records    
+        else    
+            h2 All Agencies
+                each agency in agencies    
+                    .big
+                        article.packages.justify-content-center            
+                            .row
+                                .card.col-12.border-danger.bg-light.bg-gradient.border.border-primary                                  
+                                    h3.text-center #{agency.AgncyCity} Branch
+                                    hr
+                                    h5.d-none
+                                        | Agency ID: #{agency.AgencyId}
+                                    h5.card-text
+                                        | Agency Address: #{agency.AgncyAddress}
+                                    h5.card-text
+                                        | Agency City: #{agency.AgncyCity}
+                                    h5.card-text
+                                        | Agency Prov: #{agency.AgncyProv}
+                                    h5.card-text
+                                        | Agency Postal: #{agency.AgncyPostal}
+                                    h5.card-text
+                                        | Agency Country: #{agency.AgncyCountry}
+                                    h5.card-text
+                                        | Agency Phone: #{agency.AgncyPhone}
+                                    h5.card-text
+                                        | Agency Fax: #{agency.AgncyFax}
+            a.btn.btn-primary.col-12(href='/') Home Page
+
