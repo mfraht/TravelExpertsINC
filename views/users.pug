@@ -1,37 +1,40 @@
 extends layout
 
 block content
-    .bg-image.img1
+    .bg-image.img1(style=" max-height: 300px;")
     .container
         h2 All users
-            each user in users    
-                h1 #{user.CustFirstName} #{user.CustLastName}
+            each user in users
                 .big
                     article.packages.justify-content-center            
                         .row
-                            .card.col-12.border-danger.bg-light.bg-gradient
+                            .card.col-12.border-danger.bg-light.bg-gradient.border.border-primary
+                                h3.text-center  #{user.fname} #{user.lname}
+                                hr
                                 h5.card-text
-                                    | CustomerId: #{user.userId}
+                                    | UserId: #{user.userId}
                                 h5.card-text
-                                    | CustFirstName: #{user.fname}
+                                    | Username: #{user.username}
                                 h5.card-text
-                                    | CustLastName: #{user.lname}
+                                    | User FirstName: #{user.fname}
                                 h5.card-text
-                                    | CustAddress: #{user.userAddress} 
+                                    | User LastName: #{user.lname}
                                 h5.card-text
-                                    | CustCity: #{user.userCity}
+                                    | User Address: #{user.userAddress} 
                                 h5.card-text
-                                    | CustProv: #{user.userProv}
+                                    | User City: #{user.userCity}
                                 h5.card-text
-                                    | CustPostal: #{user.userPostal}
+                                    | User Prov: #{user.userProv}
                                 h5.card-text
-                                    | CustCountry: #{user.userCountry}
+                                    | User Postal: #{user.userPostal}
                                 h5.card-text
-                                    | CustHomePhone: #{user.userHomePhone}
+                                    | User Country: #{user.userCountry}
                                 h5.card-text
-                                    | CustBusPhone: #{user.userBusPhone}
+                                    | User HomePhone: #{user.userHomePhone}
                                 h5.card-text
-                                    | CustEmail: #{user.email}
+                                    | User BusPhone: #{user.userBusPhone}
+                                h5.card-text
+                                    | User Email: #{user.email}
                                 h5.card-text
                                     | AgentId: #{user.AgentId}
                                 h5.card-text

@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    .bg-image.img1( style="height: 300px; ")
+    .container(style="background-color: lightgray")
+        if !agents
+            | No records    
+        else    
+            h2 All Agents
+                each agent in agents    
+                    .big
+                        article.packages.justify-content-center            
+                            .row
+                                .card.col-12.border-danger.bg-light.bg-gradient.border.border-primary
+                                    h3.text-center #{agent.AgtFirstName} #{agent.AgtLastName}
+                                    hr
+                                    h5.d-none
+                                        | CustomerId: #{agent.AgentId}
+                                    h5.card-text
+                                        | Agent FirstName: #{agent.AgtFirstName}
+                                    h5.card-text
+                                        | Agent LastName: #{agent.AgtLastName}
+                                    h5.card-text
+                                        | Agent BusPhone: #{agent.AgtBusPhone}
+                                    h5.card-text
+                                        | Agent Email: #{agent.AgtEmail}
+                                    h5.card-text
+                                        | Agent Position: #{agent.AgtPosition}
+                                    h5.card-text
+                                        | Agency Id: #{agent.AgencyId}
+                                    h5.card-text
+                                        | Registration time: #{agent.registeredOn}
+            a.btn.btn-primary.col-12(href='/') Home Page
+

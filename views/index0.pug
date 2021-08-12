@@ -1,0 +1,60 @@
+extends layout
+
+block content
+  
+  .container
+    //- h1= title
+    //- p Welcome to #{title}
+    //- .bg-image.img3
+    //-   h1 .
+    //-   h1 .
+    //-   h1 
+    //-     a.offset-2.centered(href='/package' style='width: 60rem;').button.btn.btn-primary Travel Packages
+    //- .content.my-3
+    //- .container
+    //-   .bg-image.img3
+    //-   .bg-image.img2
+    //-   .bg-image.img1
+    // banner
+    .banner
+      .herotext
+        h1.text-primary Travel Experts Inc
+        h2.text-primary Here to help keep you on the Move
+    .flight_form
+      h3 Find your Trip
+      .trip_type
+        form(action='#')
+          input#roundTrip(type='radio' name='tripType' value='roundTrip')
+          label(for='roundTrip') Round Trip
+          input#oneWay(type='radio' name='tripType' value='oneWay')
+          label(for='oneWay') One Way
+          input#multiCity(type='radio' name='tripType' value='multiCity')
+          label(for='multiCity') Multi City
+      br
+      br
+      .location
+        form(action='/package' method='')
+          label(for='departure') Flying From:
+          .flight-wrapper
+            select#departure(name='departure')
+              option(value='') Calgary
+              option(value='') Edmonton
+              option(value='') Toronto
+              option(value='') Vancouver
+          label(for='arrival') Flying To:
+          .flight-wrapper
+            select#arrival(name='arrival')
+              option(value='') Calgary
+              option(value='') Edmonton
+              option(value='') Toronto
+              option(value='') Vancouver
+          br
+          br
+          label(for='departure_date') Departure Date:
+          input#departure_date(type='date' name='departure_date')
+          label(for='arrival_date') Arrival Date:
+          input#arrival_date(type='date' name='arrival_date')
+          br
+          br
+          input(type='submit' value='Search' )
+      

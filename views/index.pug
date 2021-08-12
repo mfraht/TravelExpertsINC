@@ -1,18 +1,84 @@
 extends layout
 
 block content
+  //- p Welcome to #{title} 
+  //- include nav.pug
+  .bg-image.img4(style=" max-height: 300px;")
+  .bg-image.img5(style=" max-height: 300px;")
   
-  .container
-    h1= title
-    p Welcome to #{title}
-  .bg-image.img3
-    h1 .
-    h1 .
-    h1 
-      a.offset-2.centered(href='/package' style='width: 60rem;').button.btn.btn-primary Travel Packages
-    //- .content.my-3
-  .container
-    .bg-image.img3
-    .bg-image.img2
-    .bg-image.img1
+  
+  
+    //- each pack in packages
+      //- | Package Name: #{pack.PkgName}
+  
+    //- each pack in packages
     
+    #textcontent2.bg-text4
+      h1.text-primary Travel Experts Inc
+      h2.text-primary Here to help keep you on the Move
+    #textcontent2.bg-text3
+      h1.
+      h2.
+      .big
+        article.packages
+          .flight_form
+            h3 Find your Trip
+            .trip_type
+              form(action='#')
+                input#roundTrip(type='radio' name='tripType' value='roundTrip')
+                label(for='roundTrip') Round Trip
+                input#oneWay(type='radio' name='tripType' value='oneWay')
+                label(for='oneWay') One Way
+                input#multiCity(type='radio' name='tripType' value='multiCity')
+                label(for='multiCity') Multi City
+            br
+            br
+            .location
+              form(action='/package' method='')
+                label(for='departure') Flying From:
+                .flight-wrapper
+                  select#departure(name='departure')
+                    option(value='') Calgary
+                    option(value='') Edmonton
+                    option(value='') Toronto
+                    option(value='') Vancouver
+                label(for='arrival') Flying To:
+                .flight-wrapper
+                  select#arrival(name='arrival')
+                    option(value='') Calgary
+                    option(value='') Edmonton
+                    option(value='') Toronto
+                    option(value='') Vancouver
+                br
+                br
+                label(for='departure_date') Departure Date:
+                input#departure_date(type='date' name='departure_date')
+                label(for='arrival_date')  Arrival Date:
+                input#arrival_date(type='date' name='arrival_date')
+                br
+                br
+                input(type='submit' value='Search' )
+  .bg_image.img8
+  .bg_image.img10
+  .grid-container.text-center
+    .about.p-lr
+      h2 About Us
+      p
+        | Vestibulum ut tempor lorem. Nam ut mi mauris. Aliquam quis viverra 
+        a(href='#' target='_blank') velit.
+        |         Sed egestas, velit sit amet luctus pretium, enim dolor interdum felis, at pretium tellus nibh id velit.
+        |         Maecenas semper tincidunt dolor tincidunt fringilla. Fusce bibendum nunc ac magna elementum, a ultricies
+        |         nulla posuere. Cras sed lacus faucibus, ornare diam vitae, dapibus mauris. Ut ac est non lectus gravida
+        |         placerat at non lectus. Nunc blandit, elit eu tempor aliquam, mi libero fringilla nisl, non sagittis
+        |         massa justo in nunc. Donec ornare sed arcu nec tempor. Duis nec ipsum varius, viverra lacus sit amet,
+        |         sollicitudin arcu.
+    .contact_details
+      h4 Contact Us
+      i.fas(style='font-size: 20px;')  123-456-7890 
+      br
+      br
+      i.fas.fa-envelope(style='font-size: 20px;')  travelexpertsinc@icloud.com 
+      br
+      br
+      i.fas.fa-map-marker-alt(style='font-size: 20px;') Calgary, Alberta
+      

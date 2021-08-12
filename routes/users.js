@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const { User } = require("../models/user");
+const { Agent } = require("../models/agent");
 const bcrypt = require("bcryptjs");
 
 // const processErrors = require("./processErrors");
@@ -28,6 +29,21 @@ router.get("/", function (req, res, next) {
     res.render("users", { users: users });
   });
 });
+
+
+/* GET Agents contact listing. */
+router.get("/agents", function (req, res, next) {
+  //console.log("packages");
+  Agent.find().exec(function (err, agents) {
+    //console.log(packages);
+    if (err) throw err;
+    res.render("agents", { agents });
+  });
+
+  // res.render("packages", { packages });
+});
+
+
 /* Sign-up page. */
 router.get("/sign-up", function (req, res, next) {
   console.log("->-> Line 33");
@@ -42,12 +58,14 @@ router.post("/sign-up", function (req, res, next) {
   console.log("->-> Line 42");
   const user = new User(req.body);
   const errs = user.validateSync(); // Run the model validation
+  if (errs) {
+    const userId = crypto.randomInt(1, 500) + 124000;
+    return processErrors(errs, "sign-up", req, res);
+  }
   user._id = req.body.userId;
   user.customerId = req.body.userId;
   // console.log(user);
-  if (errs) {
-    return processErrors(errs, "sign-up", req, res);
-  }
+  
   bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
     if (err) throw err;
     // Replace the plain password with the hashed password

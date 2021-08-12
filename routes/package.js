@@ -85,40 +85,57 @@ router.get("/", function (req, res, next) {
   // res.render("packages", { packages });
 });
 
+
+
 // Shows a single package
 router.get("/details/:purl", function (req, res, next) {
   const packurl = req.params.purl;
+  // console.log(packurl)
   Package.findOne({ PackageId: packurl }, (err, package) => {
-    // console.log(package)
+    if (err) console.log(err);
+    
     res.render("packagedetails", { pack: package });
   });
 });
 
 // Process the buy Package data
 router.post("/buy", function (req, res, next) {
-  if (!req.user) {
-    req.session.msg = "Please log in first";
-    res.redirect("/");
-    // return
-  }
+  // if (!req.user) {
+  //   req.session.msg = "Please log in first";
+  //   res.redirect("/package");
+  //   // return
+  // }
 
   const purchase = new Purchase();
   // post.user = req.user._id;
-  purchase.userId = req.user.userId;
-
+  
+  
+  console.log(req.user.userId)
   // purchase.userId = 3;
+  const purchaseId = crypto.randomInt(1, 500) + 222000;
+  purchase._id = purchaseId;
+  purchase.purchaseId = purchaseId;
   purchase.PackageId = req.body.PackageId;
+  purchase.userId = req.user.userId;
   purchase.TravelerCount = req.body.TravelerCount;
-
-  purchase.save(function (err) {
-    if (err) return processErrors(err, "packagedetails", req, res, req.body);
+  console.log(purchase);
+  purchase.save((err, result) => {
+    if (err) {
+      return processErrors(err, "packagedetails", req, res, req.body);
+    }
     res.redirect("/package/purchases/" + purchase.userId); //package_s/purchases
+  // purchase.save(function (err) {
+  //   if (err) return processErrors(err, "packagedetails", req, res, req.body);
+  //   console.log("purchased");
+  //   res.redirect("/package/purchases/" + purchase.userId); //package_s/purchases
   });
 });
 
 /* GET the purchases page. */
 router.get("/purchases/:userId", function (req, res, next) {
+  
   const userId = req.params.userId;
+  console.log(userId)
   req.session.userId = userId;
 
   Purchase.find({ userId: userId })
@@ -126,7 +143,7 @@ router.get("/purchases/:userId", function (req, res, next) {
     .populate("PackageId")
     .exec((err, purchases) => {
       if (err) console.log(err);
-      // console.log(purchases);
+      console.log(purchases);
       res.render("purchases", { purchases });
     });
 });

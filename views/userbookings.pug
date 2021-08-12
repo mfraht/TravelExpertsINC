@@ -5,10 +5,10 @@ block content
         
     .container
         
-        if !bookings.BookingDate
-            h3 You don't have any bookings.
+        if !bookings
+            h3.bg-warning.card-text.text-center You don't have any bookings.
         else if !currentUser
-            h3 Login first please
+            h3.text-warning.card-text.text-center Login first please
         else 
             h2.bg-info Your bookings
             .row

@@ -4,13 +4,12 @@ block content
     h1= title
         
     .container
-        
-        h2.bg-info Your purchases
         if !purchases
-            h3 You don't have any purchases.
+            h3.bg-warning.text-center You don't have any purchases.
         else if !currentUser
-            h3 Login first please
+            h3.bg-warning.text-center Please Login first 
         else 
+            h2.bg-info Your purchases
             .row
             each purchase in purchases
                 if !purchase.PackageId.PackageId 
