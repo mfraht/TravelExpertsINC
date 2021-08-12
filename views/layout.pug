@@ -29,7 +29,7 @@ html
         li.nav-item
             a.text-white.nav-link(href='/post/contact') Contact us 
         
-        if currentUser && currentUser.role == "manager"
+        if currentUser && (currentUser.role == "manager" || currentUser.role == "agent")
           li(style='float:right')
             a.text-white.nav-link(href='/data') Performance Data
           li(style='float:right')
