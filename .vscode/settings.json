@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/f9b23e04-c0b1-49fb-94e2-40b008a19ad3/resourceGroups/SAIT_July22/providers/Microsoft.Web/sites/TravelexpertIncapp",
+    "appService.deploySubpath": "."
+}
