@@ -63,8 +63,10 @@ block content
                 input#birthday(type='date' name='birthday')
                 br
                 hr
-            while (count < (TravelerCount-1))
+            if (count < (TravelerCount-1))
                 h2 Who&apos;s else travelling?
+            while (count < (TravelerCount-1))
+                h3 Traveller #{count+2}
                 p Traveller names must match government-issued photo ID exactly.
                 label(for='title') Title:
                 .title-p

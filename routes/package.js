@@ -75,7 +75,7 @@ router.get("/delete/:PackageId", function (req, res, next) {
     if (err) console.log(err);
     req.session.msg = `Package ${PackageId} is deleted`;
     // message: (props) => `${props.value} is not a valid Email address.`,
-    res.redirect("/");
+    res.redirect("/package");
   });
 });
 
@@ -173,9 +173,10 @@ router.get("/purchasesdelete/:purchase_id", function (req, res, next) {
 router.get("/return/:purchase_id", function (req, res, next) {
   const purchase_id = req.params.purchase_id;
   // console.log(`PackageId is ${purchase_id}`);
-  const userID = req.session.userId;
+  
   Purchase.findById({ _id: purchase_id }, (err, purchase) => {
     PackageId = purchase.PackageId;
+    const userID = purchase.userId;
     Package.findOne({ PackageId: PackageId }, (err, Package) => {
       var a = Package.PkgStartDate;
       console.log(`Package date ${a}, its value ${a.getTime()}`);
@@ -195,7 +196,8 @@ router.get("/return/:purchase_id", function (req, res, next) {
         });
       } else
         req.session.msg = `Package "${Package.PkgName}" can not be cancelled as it is less than 24 hours cancellation`;
-      res.redirect("/package/purchases/" + userID); // Redirect to the purchases page
+        console.log(`userID ${userID}`);  
+      res.redirect("/package/purchases/"+userID); // Redirect to the purchases page
     });
   });
   // console.log(`PackageId is ${purchase_id}`);

@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  //- h2 All Comments
+  h2 Contact us
   //- if blogPost
   //-       h3= blogPost.posttitle
   //-       p= blogPost.postbody
@@ -31,24 +31,15 @@ block content
                         article.packages.justify-content-center            
                             .row
                                 .card.col-12.border-danger.bg-light.bg-gradient.border.border-primary                                  
-                                    h4.text-center #{agency.AgncyCity} Branch
+                                    h5.text-center #{agency.AgncyCity} Branch
                                     hr
                                     h6.d-none
                                         | Agency ID: #{agency.AgencyId}
                                     h6.card-text
-                                        | Agency Address: #{agency.AgncyAddress}
+                                        | Address: #{agency.AgncyAddress}, #{agency.AgncyCity}, #{agency.AgncyProv},
+                                        |  #{agency.AgncyPostal}. #{agency.AgncyCountry}
                                     h6.card-text
-                                        | Agency City: #{agency.AgncyCity}
-                                    h6.card-text
-                                        | Agency Prov: #{agency.AgncyProv}
-                                    h6.card-text
-                                        | Agency Postal: #{agency.AgncyPostal}
-                                    h6.card-text
-                                        | Agency Country: #{agency.AgncyCountry}
-                                    h6.card-text
-                                        | Agency Phone: #{agency.AgncyPhone}
-                                    h6.card-text
-                                        | Agency Fax: #{agency.AgncyFax}
+                                        | Phone: #{agency.AgncyPhone}, Fax: #{agency.AgncyFax}
 
   .container(style="background-color: lightgray")
       if !agents
@@ -60,24 +51,14 @@ block content
                       article.packages.justify-content-center            
                           .row
                               .card.col-12.border-danger.bg-light.bg-gradient.border.border-primary
-                                  h4.text-center #{agent.AgtFirstName} #{agent.AgtLastName}
+                                  h5.text-center #{agent.AgtFirstName} #{agent.AgtLastName}
                                   hr
                                   h6.d-none
                                       | CustomerId: #{agent.AgentId}
                                   h6.card-text
-                                      | Agent FirstName: #{agent.AgtFirstName}
-                                  h6.card-text
-                                      | Agent LastName: #{agent.AgtLastName}
-                                  h6.card-text
-                                      | Agent BusPhone: #{agent.AgtBusPhone}
-                                  h6.card-text
-                                      | Agent Email: #{agent.AgtEmail}
-                                  h6.card-text
+                                      | Name: #{agent.AgtFirstName} #{agent.AgtLastName}, Phone: #{agent.AgtBusPhone}, Email: #{agent.AgtEmail}
                                       | Agent Position: #{agent.AgtPosition}
-                                  h6.card-text
-                                      | Agency Id: #{agent.AgencyId}
-                                  h6.card-text
-                                      | Registration time: #{agent.registeredOn}
+                                      | Agency Id: #{agent.AgencyId}, Registration time: #{agent.registeredOn}
 
 
   
