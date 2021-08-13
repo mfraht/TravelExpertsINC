@@ -24,6 +24,8 @@ router.post("/add", function (req, res, next) {
   const PackageId = crypto.randomInt(1, 500) + 111000;
   
   pack._id = PackageId;
+  pack.PackageId = PackageId;
+
   console.log(pack._id)
   // Make sure the image starts with /imagaes/, or add it to the image path
   if (pack.image && !pack.image.includes("/images/"))
@@ -49,6 +51,7 @@ router.get("/edit/:PackageId", function (req, res, next) {
 // Process the edited Package data
 router.post("/edit/:PackageId", function (req, res, next) {
   const PackageId = req.params.PackageId;
+  req.body.PackageId=PackageId;
   new Package(req.body).validate((err) => {
     // To validate the data before updating
     if (err)
@@ -141,14 +144,14 @@ router.get("/purchases/:userId", function (req, res, next) {
   
   const userId = req.params.userId;
   console.log(userId)
-  req.session.userId = userId;
+  req.session.PackageId = userId;
 
   Purchase.find({ userId: userId })
     // Replace the PackageId with the corresponding Package object from the Packages collection(table)
     .populate("PackageId")
     .exec((err, purchases) => {
       if (err) console.log(err);
-      console.log(purchases);
+      console.log("purchases", purchases);
       res.render("purchases", { purchases });
     });
 });

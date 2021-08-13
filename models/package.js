@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const packageSchema = new Schema({
   _id: Number,
-  PackageId: { type: Number, unique: "The AgentId must be unique.", default: 0, required: "Please enter the package id." }, // String is shorthand for {type: String}
+  PackageId: { type: Number, unique: "The AgentId must be unique.", required: "Please enter the package id." }, // String is shorthand for {type: String}
   PkgName: { type: String, required: "Please enter the package name." },
   PkgStartDate: {
     type: Date,

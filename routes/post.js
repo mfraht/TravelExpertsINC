@@ -4,6 +4,7 @@ const Post = require("../models/postMdl").Post;
 const { User } = require("../models/user");
 const { Agent } = require("../models/agent");
 const { Agencie } = require("../models/agencie");
+const crypto = require("crypto");
 /* GET all posts listing. */
 router.get("/", function (req, res, next) {
   // const message = req.query.msg;
@@ -67,38 +68,54 @@ router.get("/contact", function (req, res, next) {
 
 // To recieve a new post data
 router.post("/contact", function (req, res, next) {
-  // const post = new Post(req.body);
+  if (!req.user){
+    req.session.msg = `Please login first`;
+    res.redirect("/post/contact");
+  }
   const post = new Post();
+  // const post = new Post();
+  console.log(req.body);
   post.posttitle = req.body.posttitle;
   post.postbody = req.body.postbody;
-  post.posturl = req.body.posturl;
-  // console.log(req.user);
-  post.user = req.user._id;
+  post.email = req.body.email;
+  const postId = crypto.randomInt(1, 500) + 111000;
+  console.log(postId);
+  post.postId=postId,
+  //req.user.customerId = 0;
+  console.log(post.postId);
+  
+  console.log(post);
+  //post.user = req.user._id;
+  //post.user = req.user._id;
   post.save((err) => {
     // if(err) throw err;
     if (err) {
+      console.log("save error");
       const errorArray = [];
       const errorKeys = Object.keys(err.errors);
       errorKeys.forEach((key) => errorArray.push(err.errors[key].message));
 
       return res.render("contact", {
+      
+        // postdata: req.body,
         postdata: req.body,
         errors: errorArray,
       });
     
     }
+    console.log("saved");
     // Put the thank you message in a session variable
     req.session.msg = `Thank you for posting ${req.user.fname}`;
     // req.flash("thankyou", `Thank you for posting ${req.user.fname}`);
     // res.redirect("/post" + "?msg=Thank you for posting " + req.user.fname);
-    res.redirect("/post");
+    res.redirect("/post/contact");
   });
 });
 
 // Shows a single post
 router.get("/:purl", function (req, res, next) {
   const psturl = req.params.purl;
-  Post.findOne({ posturl: psturl }, (err, post) => {
+  Post.findOne({ email: psturl }, (err, post) => {
     res.render("blog-post", { blogPost: post });
   });
 });

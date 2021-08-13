@@ -84,7 +84,7 @@ block content
   
   h2 Contact form
 
-  form(method='POST' action='/post/create')
+  form(method='POST' action='/post/contact')
     .form-floating.m-3      
       input#exampleFormControlInput1.form-control(type='text' placeholder='Name' name='posttitle' value=postdata && postdata.posttitle)
       label.form-label(for='exampleFormControlInput1') Name
@@ -92,8 +92,8 @@ block content
       textarea#floatingTextarea.form-control(placeholder='Leave a comment here' name='postbody')= postdata && postdata.postbody
       label(for='floatingTextarea') Comments
     .form-floating.m-3
-      input#posturlid.form-control(type='text' placeholder='comments' name='email'  required value=postdata && postdata.posturl)
-      label(for='posturlid') Email
+      input#email.form-control(type='text' placeholder='name@mail.com' name='email'  required value=postdata && postdata.email)
+      label(for='email') Email
       
     button.btn.btn-primary.m-3(type='submit') Submit
     
