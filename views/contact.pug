@@ -1,11 +1,7 @@
 extends layout
-
+//- Author:Mohamed Ibrahim
 block content
   h2 Contact us
-  //- if blogPost
-  //-       h3= blogPost.posttitle
-  //-       p= blogPost.postbody
-
   .bg-image.img2( style="height: 300px; ")
   .contact-grid-container
         .intro.p-lr
@@ -18,9 +14,6 @@ block content
             p(style='color: black;')  
               | Our travel brands enable every sort of traveller not just find the vacation that&apos;s ideal for them,
               | but also get the best value every time, no matter who they are or where they&apos;re going.
-  //- form(method="GET" action="/post/create")
-  //-   button.btn.btn-success(type="submit") Create
-    
   .container(style="background-color: lightgray")
         if !agencies
             | No records    
@@ -40,7 +33,6 @@ block content
                                         |  #{agency.AgncyPostal}. #{agency.AgncyCountry}
                                     h6.card-text
                                         | Phone: #{agency.AgncyPhone}, Fax: #{agency.AgncyFax}
-
   .container(style="background-color: lightgray")
       if !agents
           | No records    
@@ -59,10 +51,6 @@ block content
                                       | Name: #{agent.AgtFirstName} #{agent.AgtLastName}, Phone: #{agent.AgtBusPhone}, Email: #{agent.AgtEmail}
                                       | Agent Position: #{agent.AgtPosition}
                                       | Agency Id: #{agent.AgencyId}, Registration time: #{agent.registeredOn}
-
-
-  
-  
   h2 Contact form
 
   form(method='POST' action='/post/contact')
@@ -75,9 +63,7 @@ block content
     .form-floating.m-3
       input#email.form-control(type='text' placeholder='name@mail.com' name='email'  required value=postdata && postdata.email)
       label(for='email') Email
-      
     button.btn.btn-primary.m-3(type='submit') Submit
-    
     .intro.p-lr
         h3 Contacts
         p(style='color: black;')
@@ -87,7 +73,6 @@ block content
               | Local (toll-free): (800) 468-1579
           li(style='color: black;')
               | From abroad (charges apply): +1 414-321-0123
-
   if currentUser && currentUser.role == "manager" 
     if blogPosts
       each post in blogPosts

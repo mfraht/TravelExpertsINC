@@ -1,15 +1,10 @@
 extends layout
-
+//- Author: Cody Kozlik and Mohamed Ibrahim
 block content
-  //- h1= title
   h1 Welcome to #{title} 
-  //- include nav.pug
-  
   .bg-image.img4
   .bg-image.img5
   .bg-image.img6
-  
-  //- each pack in packages
   if pack
     #textcontent2.bg-text2
       h1 #{pack.PkgName}
@@ -21,8 +16,6 @@ block content
             p.package-tags
               span.package-tag.d-none #{pack.PackageId} 
               span.package-tag #{pack.PkgName} | All Inclusive
-              //- span.package-tag  
-            //- h1.package-title #{pack.PkgName}
             p.package-metadata
               span.package-rating
                 | &starf;&starf;&starf;&starf;
@@ -39,13 +32,9 @@ block content
               | Description: #{pack.PkgDesc}
             p.d-none
               | AgencyCommission #{pack.PkgAgencyCommission} 
-
-            //- if user.role == "agent"
-            //-   | Agency Commission: #{pack.PkgAgencyCommission} CAD
             p.card-text
             form(action='/package/buy' method='post')
               .row
-                //- .col-sm-1
                 .col-sm-12
                   input.mx-12(type='number' name='TravelerCount'  min=1 value=1) 
                   label()  Number of travellers
@@ -60,17 +49,7 @@ block content
                 .row  
                   .col-sm-6
                     a.btn.btn-primary.col-12(href='/package/edit/'+ pack.PackageId) Edit
-                  //- .col-sm-3
                   .col-md-6
                     a.btn.btn-danger.col-12(href='/package/delete/'+ pack.PackageId) Delete
   a.btn.btn-primary.col-12(href='/') Home
-  // Author: Cody Kozlik
-
-
-
-
-
-            
-
-            
 

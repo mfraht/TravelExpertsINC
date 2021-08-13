@@ -1,7 +1,6 @@
 extends layout
-
+//- Author:Mohamed Ibrahim
 block content
-  
     .container
     .main-body
       .row.gutters-sm
@@ -9,7 +8,6 @@ block content
           .card
             .card-body
               .d-flex.flex-column.align-items-center.text-center
-                //- img.rounded-circle.p-1.bg-primary(src='https://bootdey.com/img/Content/avatar/avatar6.png' alt='Admin' width='110')
                 img.rounded-circle.p-1.bg-primary(src='https://bootdey.com/img/Content/avatar/avatar7.png' alt='Admin' width='110')
                 .mt-3
                   h4 #{user.fname} #{user.lname}
@@ -81,7 +79,6 @@ block content
         .col-md-4
         .col-md-3
           a.btn.btn-primary.col-12.mt-4(href=add ? '/' : '/users/userprofile/' + (user && user.userId)) Cancel
-          //- input.btn.btn-primary.px-4(type='button' value='Save Changes')
           .row
             .col-sm-12
               .card

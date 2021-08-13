@@ -1,8 +1,7 @@
 extends layout
-
+//- Author:Mohamed Ibrahim
 block content
     h1= title
-        
     .container
         if !purchases 
             h3.bg-warning.text-center You don't have any purchases.
@@ -16,9 +15,7 @@ block content
                     img.card-img-top.mx-auto(src=purchase.PackageId.image style=" max-width:50px;")              
                     h5= purchase.PackageId.PkgName
                     h6
-                        | Description: #{purchase.PackageId.PkgDesc}
-                        //- | Start Date: #{purchase.PackageId.PkgStartDate}
-                        //- | End Date: #{purchase.PackageId.PkgEndDate}btn-success
+                        | Description: #{purchase.PackageId.PkgDesc}s
                     h6
                         | Traveler Count : #{purchase.TravelerCount}
                     h6
@@ -26,12 +23,9 @@ block content
                     h6
                         | Total Price: #{purchase.PackageId.PkgBasePrice * purchase.TravelerCount}
                     .row
-                        //- .col-sm-3
-                        //-     a.btn.btn-danger(target='__blank' href='/package/purchasesedit/'+purchase._id) Edit
                         .col-md-3
                             a.btn.btn-danger(target='__blank' href='/package/purchasesdelete/'+purchase._id) Delete
                     .row
                         form(action='/package/payment/'+purchase._id method='get')
                             .col-sm-6
                                 button.btn.btn-success.col-6(type='submit') Pay
-                

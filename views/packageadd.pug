@@ -1,5 +1,5 @@
 extends layout
-
+//- Author:Mohamed Ibrahim
 block content
   h1= title
   if add
@@ -7,14 +7,9 @@ block content
   else 
     h3 Edit Package
   form.row.g-3(method='POST' action="")
-    //- .col-md-3
-    //-   label.form-label(for='Package_Id') Package _id
-    //-   input#Package_Id.form-control(type='text' name='_id' required value= pack && pack._id)
-    
     .col-md-3
       label.form-label(for='inputname') Name
       input#inputname.form-control(type='text' name='PkgName' required value= pack && pack.PkgName)
-    
     .col-md-3
       label.form-label(for='inputprice') Price
       input#inputprice.form-control(type='number' placeholder='0.0' step="any" name='PkgBasePrice' required  value=pack && pack.PkgBasePrice)
@@ -44,15 +39,4 @@ block content
     .col-md-4
     .col-md-3
       a.btn.btn-primary.col-12.mt-4(href=add ? '/' : '/package/details/' + (pack && pack.PackageId)) Cancel
-      //- a.btn.btn-primary.col-12.mt-4(href=add ? '/' : '/package') Cancel
-      // Another way for doing the cancel button
-        if add
-          a.btn.btn-primary.col-12.mt-4(href= '/' ) Cancel
-        else 
-          a.btn.btn-primary.col-12.mt-4(href='/package/details/'+pack.PackageId) Cancel
-
-  //- .container
-  //-     if errors    
-  //-       each error in errors
-  //-           p.alert.alert-danger= error
 

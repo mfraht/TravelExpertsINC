@@ -1,8 +1,7 @@
 extends layout
-
+//- Author:Mohamed Ibrahim
 block content
     h1= title
-        
     .container
         if !booking
             h3 You don't have any bookings.
@@ -11,7 +10,6 @@ block content
         else 
             h2.bg-info Your booking is done.
             .row
-                //- each booking in bookings
                 if !purchase.PackageId.PackageId 
                     return
                 else 
@@ -33,4 +31,3 @@ block content
                     hr
             p.card-text
                 | To make changes or cancel your booking, please contact us.
-                

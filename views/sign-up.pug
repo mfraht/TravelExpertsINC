@@ -1,5 +1,5 @@
 extends layout
-
+//- Author:Mohamed Ibrahim
 block content
     h1 Please Register
     .bg-image.img1(style=" max-height: 300px;")
@@ -28,13 +28,5 @@ block content
         .col-md-6
             label(for="email") Email
             input.form-control(name="email" placeholder="Email Address" type="email")
-        //- if currentUser.role == "manager"
-            .col-md-6
-                label(for="role") Role
-                input.form-control(name="role" placeholder="manager" type="text")
-        //- else 
-        //-     .col-md-6
-        //-         label(for="role") Role
-        //-         input.form-control(name="role" placeholder="customer" type="text")
         .col-md-12
             button.btn.btn-primary(type="submit") Register

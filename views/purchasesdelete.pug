@@ -1,29 +1,22 @@
 extends layout
-
+//- Author:Mohamed Ibrahim
 block content
     h1= title
-        
     .container
-        
             h2.btn-danger Are you sure you want to delete this "#{Package.PkgName}" purchase?
             .row.justify-content-sm-center
-                    //- each purchase in purchases
-                
-                    .card.col-sm-6
-                        img.card-img-top.mx-auto(src=Package.image style=" max-width:300px;")              
-                    h5= Package.PkgName
-                    h6
-                        | Description: #{Package.PkgDesc}
-                        //- | Start Date: #{purchase.PackageId.PkgStartDate}
-                        //- | End Date: #{purchase.PackageId.PkgEndDate}btn-success
-                    h6
-                        | Traveler Count : #{purchase.TravelerCount}
-                    h6
-                        | Unit Price: #{Package.PkgBasePrice}
-                    h6
-                        | Total Price: #{Package.PkgBasePrice * purchase.TravelerCount}
-                    p.card-text
-                        form(action='/package/return/'+purchase._id method='get')
-                            .col-sm-3
-                                button.btn.btn-danger.col-3(type='submit') Delete
-                
+                .card.col-sm-6
+                    img.card-img-top.mx-auto(src=Package.image style=" max-width:300px;")              
+                h5= Package.PkgName
+                h6
+                    | Description: #{Package.PkgDesc}
+                h6
+                    | Traveler Count : #{purchase.TravelerCount}
+                h6
+                    | Unit Price: #{Package.PkgBasePrice}
+                h6
+                    | Total Price: #{Package.PkgBasePrice * purchase.TravelerCount}
+                p.card-text
+                    form(action='/package/return/'+purchase._id method='get')
+                        .col-sm-3
+                            button.btn.btn-danger.col-3(type='submit') Delete

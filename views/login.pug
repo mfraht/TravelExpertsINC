@@ -1,9 +1,8 @@
+//- Author:Mohamed Ibrahim
 if !hideLogin
     .container
         form(action="/login" method="POST").text-center
-            ul.bg-light
-                //- li.offset-1
-                //-     h5 Sign in 
+            ul.bg-light 
                 li.offset-3
                     input.form-control(name="username" placeholder="Username" type="text")
                 li
@@ -13,18 +12,3 @@ if !hideLogin
                 if !currentUser
                     li.offset-1
                         a.float-end.bg-secondary(href="/users/sign-up").button.btn.btn-primary.mb-2 Register
-                    
-
-    //- .bg-secondary
-    //-     form.row.g-3(action="/login" method="POST")
-    //-         .col
-    //-             h5 Please Log In
-    //-         .col            
-    //-             input.form-control(name="username" placeholder="Username" type="text")
-    //-         .col
-    //-             input.form-control(name="password" type="password" placeholder="Password")
-    //-         .col
-    //-             button.btn.btn-primary.mb-2 Log In
-
-    //-     a.float-end.bg-secondary(href="/users/sign-up") 
-    //-         h5 Register

@@ -1,20 +1,13 @@
 extends layout
-
+//- Author:Mohamed Ibrahim and Emmanuel Ajoma
 block content
   h1 Travel Packages
-  //- p Welcome to #{title} 
-  //- include nav.pug
-  
   .bg-image.img4
   .bg-image.img5
   .bg-image.img6
   .bg-image.img4
   .bg-image.img5
   .bg-image.img6
-  
-    //- each pack in packages
-      //- | Package Name: #{pack.PkgName}
-  
   each pack in packages
     #textcontent2.bg-text
       h1 #{pack.PkgName}
@@ -27,7 +20,6 @@ block content
             p.package-tags
               span.package-tag #{pack.PkgName}| 
               span.package-tag All Inclusive 
-            //- h1.package-title #{pack.PkgName}
             p.package-metadata
               span.package-rating
                 | &starf;&starf;&starf;&starf;
@@ -38,8 +30,6 @@ block content
               | Cruise the Caribbean &amp; Celebrate the New Year.
             h4 
               a(href="/package/details/" + pack.PackageId).card-title Click for details
-            //- if user.role == "agent"
-            //-   | Agency Commission: #{pack.PkgAgencyCommission} CAD
             button.package-buy(type='button')
               a(href="/package/details/" + pack.PackageId)
                 img#cart(src='/images/shopping-cart.png')

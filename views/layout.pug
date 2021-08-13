@@ -1,24 +1,14 @@
 doctype html
+//- Author:Mohamed Ibrahim
 html
   head
-    //- title= pagetitle
-    // Required meta tags
     meta(charset='utf-8')
     meta(name='viewport' content='width=device-width, initial-scale=1')
     //- Bootstrap CSS
     link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
-    
-    
-    
     link(rel='stylesheet', href='/stylesheets/style.css')
-    //- title Caribbean New Year
-    //- <link rel="stylesheet" href="../packages.css">
     link(rel='stylesheet' href='/stylesheets/packages.css') 
     link(rel='stylesheet' href='/stylesheets/package1.css')
-    //- link(rel='stylesheet' href='../stylesheets/new_packages.css')
-    //- link(rel='stylesheet' href='/stylesheets/homepage.css')
-
-  
   body
     h5 
       ul
@@ -28,7 +18,7 @@ html
             a.text-white.nav-link(href='/package') Travel Packages
         li.nav-item
             a.text-white.nav-link(href='/post/contact') Contact us 
-        
+  
         if currentUser && (currentUser.role == "manager" || currentUser.role == "agent")
           li(style='float:right')
             a.text-white.nav-link(href='/data') Performance Data
@@ -43,13 +33,6 @@ html
             a.text-white.nav-link(href='/users/userprofile/' + currentUser.userId) Profile
           li(style='float:right')
             a.text-white.nav-link(href='/package/purchases/' + currentUser.userId) Cart
-          
-          
-
-
-
-    //- .container
-    //-   include nav.pug
 
     .container 
       if currentUser
@@ -60,7 +43,7 @@ html
             a.offset-1.button.btn.btn-primary.mb-2(href="/log-out") Log Out
       else
         include login.pug
-
+    //- Displaying Error messages
     .container
       if errors    
         if errors.length > 5    
@@ -68,28 +51,15 @@ html
         else    
           each error in errors
               p.alert.alert-danger= error
-
-
+    //- Displaying messages
     .content.my-3
       if message
         .alert.alert-success= message
-      //- if  messages()
-      //-   .alert.alert-success
-      //-     each msg in messages()
-      //-       p=msg
-    
-    //- .content.my-3
+
     block content
-    //- .bg-image.img3
-    //-   
-    //- .bg-image.img2
-    //- .bg-image.img1
-      
 
     .container.bg-secondary.my-4
-      h5 Copyright 2021
-    // Optional JavaScript; choose one of the two!
-    // Option 1: Bootstrap Bundle with Popper
+      h5 Copyright 2021 Travel Expert Inc
     script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous')
     script(type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js')
     script(type='text/javascript' src='http://code.jquery.com/jquery-migrate-1.2.1.min.js')

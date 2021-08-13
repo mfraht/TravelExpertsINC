@@ -1,10 +1,8 @@
 extends layout
-
+//- Author:Mohamed Ibrahim
 block content
     h1= title
-        
     .container
-        
         if !bookings || bookings == null || bookings ==[]
             h3.bg-warning.card-text.text-center You don't have any bookings.
         else if !currentUser
@@ -23,7 +21,6 @@ block content
                         |Booking Date: #{booking.BookingDate}
                         br
                     h6
-                        
                         | Description: #{booking.PackageId.PkgDesc}
                         br
                         | Start Date: #{booking.PackageId.PkgStartDate} 
