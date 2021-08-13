@@ -12,29 +12,12 @@ block content
                                 h3.text-center  #{element.CustFirstName} #{element.CustLastName}
                                 hr
                                 h5.card-text
-                                    | CustomerId: #{element.CustomerId}
+                                    | CustomerId: #{element.CustomerId}, Email: #{element.CustEmail},   Agent Id: #{element.AgentId}
                                 h5.card-text
-                                    | CustFirstName: #{element.CustFirstName}
+                                    | Address: #{element.CustAddress}, #{element.CustCity}, #{element.CustProv},
+                                    | #{element.CustPostal}. #{element.CustCountry}
                                 h5.card-text
-                                    | CustLastName: #{element.CustLastName}
-                                h5.card-text
-                                    | CustAddress: #{element.CustAddress} 
-                                h5.card-text
-                                    | CustCity: #{element.CustCity}
-                                h5.card-text
-                                    | CustProv: #{element.CustProv}
-                                h5.card-text
-                                    | CustPostal: #{element.CustPostal}
-                                h5.card-text
-                                    | CustCountry: #{element.CustCountry}
-                                h5.card-text
-                                    | CustHomePhone: #{element.CustHomePhone}
-                                h5.card-text
-                                    | CustBusPhone: #{element.CustBusPhone}
-                                h5.card-text
-                                    | CustEmail: #{element.CustEmail}
-                                h5.card-text
-                                    | AgentId: #{element.AgentId}
+                                    | Home Phone: #{element.CustHomePhone},  Bus Phone: #{element.CustBusPhone}
                                 h5.card-text
                                     a.btn.btn-info(target='__blank' href='/users/useradddetails/'+ element.userId) User Profile
         a.btn.btn-primary.col-12(href='/') Home Page

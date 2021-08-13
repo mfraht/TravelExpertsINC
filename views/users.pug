@@ -12,33 +12,14 @@ block content
                                 h3.text-center  #{user.fname} #{user.lname}
                                 hr
                                 h5.card-text
-                                    | UserId: #{user.userId}
+                                    | Username: #{user.username}, UserId: #{user.userId}, Role: #{user.role}
                                 h5.card-text
-                                    | Role: #{user.role}
+                                    | User Address: #{user.userAddress}, #{user.userCity}, #{user.userProv},
+                                    | #{user.userPostal}. #{user.userCountry}
                                 h5.card-text
-                                    | Username: #{user.username}
+                                    | Home Phone: #{user.userHomePhone}, Bus Phone: #{user.userBusPhone}
                                 h5.card-text
-                                    | User FirstName: #{user.fname}
-                                h5.card-text
-                                    | User LastName: #{user.lname}
-                                h5.card-text
-                                    | User Address: #{user.userAddress} 
-                                h5.card-text
-                                    | User City: #{user.userCity}
-                                h5.card-text
-                                    | User Prov: #{user.userProv}
-                                h5.card-text
-                                    | User Postal: #{user.userPostal}
-                                h5.card-text
-                                    | User Country: #{user.userCountry}
-                                h5.card-text
-                                    | User HomePhone: #{user.userHomePhone}
-                                h5.card-text
-                                    | User BusPhone: #{user.userBusPhone}
-                                h5.card-text
-                                    | User Email: #{user.email}
-                                h5.card-text
-                                    | AgentId: #{user.AgentId}
+                                    | User Email: #{user.email}, Agent Id: #{user.AgentId}
                                 h5.card-text
                                     a.btn.btn-info(target='__blank' href='/users/userprofile/'+ user.userId) User Profile
         a.btn.btn-primary.col-12(href='/') Home Page
