@@ -1,4 +1,4 @@
-// Using Node.js `require()`
+//- Updated by: Mohamed Ibrahim
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 const { Agent } = require("./agent");
@@ -51,7 +51,6 @@ const userSchema = new mongoose.Schema({
   userHomePhone: {
     type: Number,
     trim: true,
-    // default: 0,
   },
   userBusPhone: {
     type: Number,
@@ -87,7 +86,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
     default: "customer",
   },
-  customerId: { type: Number, ref: "Customer"  },
+  CustomerId: { type: Number, ref: "Customer"  },
   agentId: { type: Number, ref: "Agent", default: 2 },
 });
 

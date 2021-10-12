@@ -1,6 +1,6 @@
-// Require the mongoose module
+//- Updated by: Mohamed Ibrahim
 var mongoose = require("mongoose");
-// const uniqueValidator = require("mongoose-unique-validator");
+const uniqueValidator = require("mongoose-unique-validator");
 
 const postSchema = new mongoose.Schema({
   postId: {type: Number, unique: "The ID must be unique.",},
@@ -23,13 +23,11 @@ const postSchema = new mongoose.Schema({
   email: {
     type: String,
     trim: true,
-    // required: "Please enter your email",
+    required: "Please enter your email",
   },
-  // user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 
-  // more fields defined below
 });
 
-// postSchema.plugin(uniqueValidator);
+postSchema.plugin(uniqueValidator);
 
 module.exports.Post = mongoose.model("Post", postSchema);

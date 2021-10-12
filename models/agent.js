@@ -1,7 +1,4 @@
-// Using Node.js `require()`
-// npm i mongoose
-// npm i mongoose-unique-validator
-
+//- Updated by: Mohamed Ibrahim
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 
@@ -12,7 +9,6 @@ const agentSchema = new mongoose.Schema({
     required: "AgentId is required",
     trim: true,
     unique: "The AgentId must be unique.",
-    // lowercase: true,
   },
   AgtFirstName: {
     type: String,
@@ -51,12 +47,9 @@ const agentSchema = new mongoose.Schema({
     type: Number,
     trim: true,
   },
-  //   registeredOn: {
-  //   type: Date,
-  //   default: new Date(),
-  // },
 });
 
 agentSchema.plugin(uniqueValidator);
+
 // Create a model Agent using the agentSchema
 module.exports.Agent = mongoose.model("agent", agentSchema);

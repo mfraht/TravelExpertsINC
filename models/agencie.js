@@ -1,7 +1,4 @@
-// Using Node.js `require()`
-// npm i mongoose
-// npm i mongoose-unique-validator
-
+//- Author: Mohamed Ibrahim
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 

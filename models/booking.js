@@ -1,3 +1,4 @@
+//- Author: Mohamed Ibrahim
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 // productId: { type: Schema.Types.ObjectId, ref: "Product" },

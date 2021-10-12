@@ -1,3 +1,4 @@
+// Updated by Mohamed Ibrahim
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -7,14 +8,10 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var postRouter = require("./routes/post");
-
 var customersRouter = require("./routes/customer");
 var packagesRouter = require("./routes/package");
-// var dataRouter = require("./routes/data-proxy");
-
 
 const mongoSanitize = require("express-mongo-sanitize");
-
 var app = express();
 
 // view engine setup
@@ -33,27 +30,28 @@ app.use(
     replaceWith: "_",
   })
 );
+
 // -------------------------------------------------------------
 // Configure the DB connection using Mongoose
 var mongoose = require("mongoose");
-
 mongoose.set('useCreateIndex', true);
+
 // Set up a mongoose connection
 var mongoDBurl = "mongodb://localhost:27017/blog";
-
 mongoose.connect(process.env.MONGO_URL || mongoDBurl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 // Get the connection
 var db = mongoose.connection;
 // Bind connection to error event (to get notification of connection errors)
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
-
 db.once("open", function () {
   console.log(`DataBase is connected!, Port No: ${process.env.PORT}`);
 
 });
+
 // -------------------------------------------------------------
 // For Passport.js
 require("./my-passport").init(app);
@@ -72,10 +70,8 @@ app.all(/(data|_dash|_reload)\S*/, require("./routes/data-proxy"));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/post", postRouter);
-
 app.use("/customer", customersRouter);
 app.use("/package", packagesRouter);
-// app.use("/data-proxy", dataRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -29,5 +29,6 @@ block content
                     h4
                         | Total money paid: #{purchase.PackageId.PkgBasePrice * booking.TravelerCount}
                     hr
-            p.card-text
-                | To make changes or cancel your booking, please contact us.
+                    .row
+                        .col-md-6
+                            a.btn.btn-danger.col-6(target='__blank' href='/package/bookingdelete/'+booking._id) Delete

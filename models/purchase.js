@@ -1,6 +1,7 @@
+//- Updated by: Mohamed Ibrahim
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-// productId: { type: Schema.Types.ObjectId, ref: "Product" },
+
 const purchaseSchema = new Schema({
   _id: Number,
   purchaseId: {

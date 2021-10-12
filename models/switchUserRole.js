@@ -1,33 +1,27 @@
+//- Updated by: Mohamed Ibrahim
 const { User } = require("./user");
 const { Agent } = require("./agent");
 const { Customer } = require("./customersMdl");
 
 module.exports = function (userId, newRole, callback) {
-  console.log(userId);
-  console.log(newRole);
   User.findOne({ userId: userId }, (err, user) => {
-    console.log(`Line 19 user ${user}`);
     if (err) {
       console.error(err);
       return callback(err);
     }
-    
     if (user.role === "customer" || user.role === "manager") {
-      customerId = user.customerId;
-      console.log(customerId);
-      Customer.findOne({ CustomerId: customerId }, (err, customer) => {
+      CustomerId = user.CustomerId;
+      Customer.findOne({ CustomerId: CustomerId }, (err, customer) => {
         if (err) {
           console.error(err);
           return callback(err);
         }
-        console.log(customer);
         const agent = new Agent();
         // Copy some data from customer to Agent table before we delete the customer record
         agent.AgtFirstName = customer.CustFirstName;
         agent.AgtLastName = customer.CustLastName;
         agent.AgentId = customer.CustomerId;
         agent._id = customer._id;
-        console.log(agent);
         //agent.registeredOn = customer.registeredOn;
         customer.delete((err) => {
           if (err) return console.error(err);
@@ -52,7 +46,6 @@ module.exports = function (userId, newRole, callback) {
       });
     } else {
       if (newRole !== "customer") {
-        console.log(newRole);
         // will process manager <-> agent
         user.role = newRole;
         user.save((err) => {

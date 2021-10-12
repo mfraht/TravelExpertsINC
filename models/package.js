@@ -1,3 +1,4 @@
+//- Author: Mohamed Ibrahim and Emmanuel Ajoma
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
@@ -22,7 +23,6 @@ const packageSchema = new Schema({
     type: Number,
     required: "Please enter the package Agency Commission.",
   },
-  // description: String,
   image: String,
 });
 

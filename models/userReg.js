@@ -1,4 +1,4 @@
-// Using Node.js `require()`
+//- Updated by: Mohamed Ibrahim
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 
